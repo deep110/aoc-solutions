@@ -1,4 +1,4 @@
-with open("input_1.txt") as f:
+with open("input/input_1.txt") as f:
     ms = f.readlines()
 
 ms = list(map(lambda x: int(x.strip()), ms))
