@@ -1,4 +1,4 @@
-with open("input_2.txt") as f:
+with open("input/input_2.txt") as f:
     arr = f.read()
 
 arr = arr.split(",")

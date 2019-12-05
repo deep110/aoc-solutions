@@ -1,6 +1,6 @@
 import numpy as np
 
-with open("input_3.txt") as f:
+with open("input/input_3.txt") as f:
     wires = f.readlines()
 
 wires = list(map(lambda x: x.strip().split(","), wires))
