@@ -39,4 +39,5 @@ def part2():
 
     return no_valid
 
-part2()
+print("Part1 solution: ", part1())
+print("Part2 solution: ", part2())

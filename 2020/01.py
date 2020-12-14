@@ -1,11 +1,8 @@
 with open("input/input_1.txt") as f:
     ms = f.readlines()
 
-ms = list(map(lambda x: int(x.strip()), ms))
-
+_ms_set = set(map(lambda x: int(x.strip()), ms))
 _sum = 2020
-
-_ms_set = set(ms)
 
 def part1():
     a, b = (None, None)
@@ -27,6 +24,7 @@ def part2():
                 a, b, c = (i, j, k)
                 break
 
-    return a*b * c
+    return a * b * c
 
-print(part2())
+print("Part1 solution: ", part1())
+print("Part2 solution: ", part2())

@@ -24,7 +24,7 @@ def trees(slope):
     return no_trees
 
 def part1():
-    print(trees((3, 1)))
+    return trees((3, 1))
 
 def part2():
     x = trees((1,1))
@@ -33,6 +33,7 @@ def part2():
     w = trees((7,1))
     t = trees((1,2))
 
-    print(x*y*z*w*t)
+    return x*y*z*w*t
 
-part2()
+print("Part1 solution: ", part1())
+print("Part2 solution: ", part2())
