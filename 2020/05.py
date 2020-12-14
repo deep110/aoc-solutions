@@ -49,9 +49,9 @@ def part2():
         if i and len(i) < 8:
             print(i)
 
-    print(64*8+5)
-    
+    return 64*8+5
 
-part2()
+print("Part1 solution: ", part1())
+print("Part2 solution: ", part2())
 
     

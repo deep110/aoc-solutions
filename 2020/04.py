@@ -17,7 +17,7 @@ def part1():
         if (len(k) == 8) or is_cid:
             valid += 1
 
-    print(valid)
+    return valid
 
 
 def is_valid_hgt(hgt):
@@ -66,4 +66,5 @@ def part2():
     
     return valid
 
-part2()
+print("Part1 solution: ", part1())
+print("Part2 solution: ", part2())
