@@ -2,6 +2,7 @@ from os import path
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
     ms = f.readlines()
+ms = [i.strip() for i in ms]
 
 def part1():
     WIN_CONDITION =  [ "A Y", "B Z", "C X" ]
@@ -9,7 +10,6 @@ def part1():
 
     score = 0
     for i in ms:
-        game = i.strip()
         score += ord(game[-1]) - 87
         if game in WIN_CONDITION:
             score += 6
@@ -22,8 +22,6 @@ def part2():
     score = 0
 
     for i in ms:
-        game = i.strip()
-
         win_score = (ord(game[-1]) - 88) * 3
         shape_score = 0
 
