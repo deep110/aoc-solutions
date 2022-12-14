@@ -45,5 +45,7 @@ else:
 # create folder for particular day & year
 dir_name = "{}/day{:02}".format(year, day)
 os.makedirs(dir_name, exist_ok=True)
-with open(dir_name + "/solution.py", "w") as f:
-    f.write(SOLUTION_TEMPLATE)
+
+if not os.path.exists(dir_name + "/solution.py"):
+    with open(dir_name + "/solution.py", "w") as f:
+        f.write(SOLUTION_TEMPLATE)
