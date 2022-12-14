@@ -1,8 +1,7 @@
 from os import path
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
-ms = [i.strip() for i in ms]
+    ms = f.read().split("\n")
 
 def priority(obj):
     if ord(obj) > 96:
