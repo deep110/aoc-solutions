@@ -42,7 +42,7 @@ class Monkey(object):
         self.throw[False] = int(THROW_PATTERN.search(p[5])[2])
 
 
-    def inspect(self, is_part1, product=None):
+    def inspect(self, worry_reduce):
         it = self.items.pop(0)
         if self.op2["num"] == "old":
             it = it * it
@@ -52,10 +52,7 @@ class Monkey(object):
             elif self.op2["op"] == "+":
                 it += self.op2["num"]
 
-        if is_part1:
-            it = int(it / 3)
-        else:
-            it = it % product
+        it = worry_reduce(it)
 
         is_divisible = (it % self.divide_by) == 0
         self.total_inspects += 1
@@ -74,7 +71,7 @@ def part1():
     for r in range(NUM_ROUNDS):
         for m in monkeys:
             while len(m.items) > 0:
-                wl, new_m_index = m.inspect(True)
+                wl, new_m_index = m.inspect(lambda x: int(x/3))
                 monkeys[new_m_index].items.append(wl)
 
     monkeys.sort(key=lambda x: x.total_inspects, reverse=True)
@@ -90,7 +87,7 @@ def part2():
     for r in range(NUM_ROUNDS):
         for m in monkeys:
             while len(m.items) > 0:
-                wl, new_m_index = m.inspect(False, total_prod)
+                wl, new_m_index = m.inspect(lambda x: x % total_prod)
                 monkeys[new_m_index].items.append(wl)
 
     monkeys.sort(key=lambda x: x.total_inspects, reverse=True)
