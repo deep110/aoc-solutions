@@ -22,5 +22,11 @@ def part2():
     total_cal_sorted = sorted(total_cal, reverse=True)
     return sum(total_cal_sorted[:3])
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 66719
+assert ans_part_2 == 198551

@@ -1,7 +1,7 @@
 import os
+from time import time
 from sys import argv
 import subprocess
-from time import time
 
 
 def print_usage():
@@ -20,15 +20,22 @@ def to_int(i, name):
 if len(argv) == 2:
     year = to_int(1, "YEAR")
 
+    print("| Day | Runtime | Status |")
+    print("|-----|---------|--------|")
+
     # run for all days
     for day in range(1, 26):
         if os.path.isfile(f"{year}/day{day:02}/solution.py"):
-            print(f"Day {day:02}")
             t1 = time()
-            result = subprocess.call(["python", f"{year}/day{day:02}/solution.py"])
+            result = subprocess.run(
+                ["python", f"{year}/day{day:02}/solution.py"],
+                capture_output=True,
+            )
             t2 = time()
-            print(f"Time taken: {(t2-t1):.4f}s")
-            print("-------------")
+            runtime = t2 - t1
+            status = "✅" if result.returncode == 0 else "❌"
+
+            print(f"| {day:02d} | {runtime:.4f}s | {status} |")
 
 elif len(argv) == 3:
     year = to_int(1, "YEAR")

@@ -10,6 +10,7 @@ FILE = re.compile(r"(dir|\d+) (.*)")
 TOTAL_SPACE = 70000000
 UPDATE_SIZE = 30000000
 
+
 class File:
     def __init__(self, name, size=0, is_dir=False):
         self.name = str(name)
@@ -20,7 +21,7 @@ class File:
 
     def __repr__(self):
         return self.name
-    
+
     def get_size(self):
         if self.size != 0:
             return self.size
@@ -46,7 +47,7 @@ def change_dir(new_dir_name, current_dir, fs):
         if current_dir.name == "/":
             return current_dir
         return current_dir.parent
-    
+
     if new_dir_name == "/":
         return fs[0]
 
@@ -71,7 +72,7 @@ def add_file(input, current_dir, fs):
 def build_file_system():
     fs = [File("/", 0, True)]
     current_dir = None
-    
+
     for i in ms:
         # if it is command
         if i[0] == "$":
@@ -82,13 +83,15 @@ def build_file_system():
                     raise Exception(f"No dir found - {current_dir}")
         else:
             add_file(i, current_dir, fs)
-    
+
     for d in fs:
         d.get_size()
 
     return fs
 
+
 fs = build_file_system()
+
 
 def part1():
     total = 0
@@ -99,10 +102,11 @@ def part1():
 
     return total
 
+
 def part2():
     used_space = fs[0].size
     free_space = TOTAL_SPACE - used_space
-    space_needed = UPDATE_SIZE-free_space
+    space_needed = UPDATE_SIZE - free_space
 
     deleted_size = math.inf
     for d in fs:
@@ -113,5 +117,11 @@ def part2():
     return deleted_size
 
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 1084134
+assert ans_part_2 == 6183184
