@@ -11,6 +11,7 @@ for i in ms:
     p = PATTERN.search(i)
     tasks.append([(int(p[1]), int(p[2])), (int(p[3]), int(p[4]))])
 
+
 def part1():
     total = 0
 
@@ -20,11 +21,12 @@ def part1():
 
     return total
 
+
 def part2():
     total = 0
 
     for e1, e2 in tasks:
-        if (e1[0] > e2[0]):
+        if e1[0] > e2[0]:
             if e1[0] >= e2[0] and e1[0] <= e2[1]:
                 total += 1
         else:
@@ -33,5 +35,12 @@ def part2():
 
     return total
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 513
+assert ans_part_2 == 878

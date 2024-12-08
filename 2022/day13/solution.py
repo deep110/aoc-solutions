@@ -39,12 +39,12 @@ def part1():
     for i in ms:
         a, b = i.strip().split("\n")
         pairs.append((json.loads(a), json.loads(b)))
-    
+
     right_order_sum = 0
     for i in range(len(pairs)):
         ro = is_right_order(pairs[i][0], pairs[i][1])
         if ro == 1:
-            right_order_sum += (i+1)
+            right_order_sum += i + 1
 
     return right_order_sum
 
@@ -55,7 +55,7 @@ def part2():
         a, b = i.strip().split("\n")
         packets.append(json.loads(a))
         packets.append(json.loads(b))
-    
+
     # add divider packets
     packets.append([[2]])
     packets.append([[6]])
@@ -66,9 +66,16 @@ def part2():
     for i, p in enumerate(packets):
         if len(p) == 1 and isinstance(p[0], list) and len(p[0]) == 1:
             if p[0][0] == 6 or p[0][0] == 2:
-                decoder_key *= i+1
+                decoder_key *= i + 1
 
     return decoder_key
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 5588
+assert ans_part_2 == 23958

@@ -7,6 +7,7 @@ with open(path.join(path.dirname(__file__), "input.txt")) as f:
 NUM_ROWS = len(ms)
 NUM_COLUMNS = len(ms[0])
 
+
 def parse_to_graph():
     graph = []
     start_coord = None
@@ -28,7 +29,7 @@ def parse_to_graph():
 
 
 def is_in_grid(row, col):
-  return (row >= 0) and (row < NUM_ROWS) and (col >= 0) and (col < NUM_COLUMNS)
+    return (row >= 0) and (row < NUM_ROWS) and (col >= 0) and (col < NUM_COLUMNS)
 
 
 def get_neighbors(c, graph, end):
@@ -77,11 +78,17 @@ def part2():
         for j in range(NUM_COLUMNS):
             if graph[i][j] == 0:
                 dis = bfs(graph, (i, j), end_coord)
-                if dis != None and dis < min_distance:
+                if dis is not None and dis < min_distance:
                     min_distance = dis
-    
+
     return min_distance
 
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 361
+assert ans_part_2 == 354
