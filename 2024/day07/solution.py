@@ -73,8 +73,8 @@ def part2():
 ans_part_1 = part1()
 ans_part_2 = part2()
 
-assert ans_part_1 == 303766880536
-assert ans_part_2 == 337041851384440
-
 print("Part1 solution: ", ans_part_1)
 print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 303766880536
+assert ans_part_2 == 337041851384440
