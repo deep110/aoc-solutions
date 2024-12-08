@@ -13,8 +13,14 @@ def part1():
 def part2():
     pass
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 0
+assert ans_part_2 == 0
 """
 
 def print_usage():
