@@ -1,6 +1,8 @@
 # aoc-solutions
 Solutions in python for online contest [Advent of Code](https://adventofcode.com/)
 
+Challenge for myself is to get to a solution < 1s without parallel processing.
+
 
 ## Setup
 

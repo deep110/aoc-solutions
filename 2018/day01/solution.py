@@ -8,7 +8,7 @@ def to_num(_k):
     _k = _k.rstrip('\n')
     return int(_k[1:]) if _k[0] == '+' else (-1 * int(_k[1:]))
 
-ms = list(map(lambda x: to_num(x), a))
+ms = list(map(lambda x: to_num(x), ms))
 
 def part1():
     return sum(ms)
@@ -17,7 +17,7 @@ def part2():
     z = 0
     curr = {0}
 
-    for i in itertools.cycle(a):
+    for i in itertools.cycle(ms):
         z += i
 
         if z in curr:
