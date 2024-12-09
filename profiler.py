@@ -36,6 +36,7 @@ if len(argv) == 2:
             status = "✅" if result.returncode == 0 else "❌"
 
             print(f"| {day:02d} | {runtime:.4f}s | {status} |")
+    print("|-----|---------|--------|")
 
 elif len(argv) == 3:
     year = to_int(1, "YEAR")
