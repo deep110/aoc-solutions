@@ -4,14 +4,13 @@ import itertools
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
     ms = f.readlines()
 
-def to_num(_k):
-    _k = _k.rstrip('\n')
-    return int(_k[1:]) if _k[0] == '+' else (-1 * int(_k[1:]))
 
-ms = list(map(lambda x: to_num(x), ms))
+ms = list(map(lambda x: int(x), ms))
+
 
 def part1():
     return sum(ms)
+
 
 def part2():
     z = 0
@@ -26,5 +25,11 @@ def part2():
             curr.add(z)
 
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 416
+assert ans_part_2 == 56752

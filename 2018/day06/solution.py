@@ -9,7 +9,7 @@ def t(x):
     return int(p[0]), int(p[1])
 
 
-a = list(map(lambda x: t(x), a))
+a = list(map(lambda x: t(x), ms))
 
 xmax = max(a, key=lambda x: x[0])[0]
 ymax = max(a, key=lambda x: x[1])[1]
