@@ -1,49 +1,39 @@
 from os import path
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    a = f.read()
+    ms = f.read().strip()
 
-a = a.replace('\n', '')
 
-def is_match(s1, s2):
-    return (abs(ord(s1) - ord(s2))) == 32
-
-def part1(a):
-    l = None
-    k = ''
-    while True:
-        for c, i in enumerate(a):
-            if l:
-                if not is_match(l, i):
-                    k = k + l
-                    l = i
-                else:
-                    l = None
-            else:
-                l = i
-            if c == (len(a) - 1) and (l is not None):
-                k += i
-        if len(a) == len(k):
-            break
+def part1(ms: str):
+    processed_polymer = []
+    for p in ms:
+        if (
+            len(processed_polymer) > 0
+            and abs(ord(p) - ord(processed_polymer[-1])) == 32
+        ):
+            processed_polymer.pop()
         else:
-            a = k
-            k = ''
-            l = None
+            processed_polymer.append(p)
 
-    return len(k)
-
-def part2(a):
-    l = 100000
-    for i in range(97, 123):
-        p = a.replace(chr(i), "")
-        p = p.replace(chr(i-32), "")
-        v = part_one(p)
-        if v < l:
-            l = v
-
-        print('completed', i)
-    return l
+    return len(processed_polymer)
 
 
-print("Part1 solution: ", part1(a))
-print("Part2 solution: ", part2(a))
+def part2(ms: str):
+    least_len = 100000
+    for i in range(ord("a"), ord("z")):
+        p = ms.replace(chr(i), "").replace(chr(i - 32), "")
+        processed_len = part1(p)
+        if processed_len < least_len:
+            least_len = processed_len
+
+    return least_len
+
+
+ans_part_1 = part1(ms)
+ans_part_2 = part2(ms)
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 9116
+assert ans_part_2 == 6890
