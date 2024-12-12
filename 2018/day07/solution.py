@@ -1,44 +1,74 @@
+from collections import defaultdict
 from os import path
 import re
 
+PATTERN = re.compile(r"Step ([A-Z]) must be finished before step ([A-Z]) can begin.")
+
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
     ms = f.readlines()
+steps = list(map(lambda x: tuple(PATTERN.search(x).groups()), ms))
 
-p = re.compile(r"Step ([A-Z]) must be finished before step ([A-Z]) can begin.")
 
-def t(x):
-    _s = p.search(x)
-    return [_s.group(1), _s.group(2)]
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+        self.incoming_edges = defaultdict(list)
 
-events = list(map(lambda x: t(x), ms))
-print(len(events), events[0], ms[0])
+    def add_node(self, from_node, to_node):
+        self.graph[from_node].append(to_node)
+        self.incoming_edges[to_node].append(from_node)
 
-tasks = []
-for e in events:
-    tasks.extend(e)
-tasks = list(set(tasks))
-tasks.sort()
-print(tasks)
+    def get_outgoing_nodes(self, node):
+        return self.graph[node]
+
+    def get_incoming_edges(self, node):
+        return self.incoming_edges[node]
+
+    def nodes(self):
+        return self.graph.keys()
+
+
+def build_graph(_steps):
+    _graph = Graph()
+    for step in _steps:
+        _graph.add_node(step[0], step[1])
+
+    return _graph
+
 
 def part1():
-    p = tasks
-    for e in events:
-        print("-"*30)
-        print(e)
-        print("Before: ", p)
-        i, j = p.index(e[0]), p.index(e[1])
-        if i < j:
-            continue
-        
-        len_tasks = len(p)
-        p = [*p[0:j], p[i], *p[j:i], *p[i+1:len_tasks]]
-        print("After: ", p)
+    step_order = []
+    for g in graph.nodes():
+        if len(graph.get_incoming_edges(g)) == 0:
+            step_order.append(g)
 
+    to_check_nodes = []
+    while True:
+        next_valid = graph.get_outgoing_nodes(step_order[-1])
+        to_check_nodes.extend(next_valid)
+        if len(to_check_nodes) == 0:
+            break
 
-    return "".join(p)
+        to_check_nodes = list(set(to_check_nodes))
+        to_check_nodes.sort()
+
+        while len(to_check_nodes) > 0:
+            n = to_check_nodes.pop(0)
+            if set(graph.get_incoming_edges(n)).issubset(set(step_order)):
+                # prev tasks are done, pick it
+                step_order.append(n)
+                break
+            else:
+                to_check_nodes.append(n)
+
+    return "".join(step_order)
+
 
 def part2():
     pass
+
+
+graph = build_graph(steps)
 
 ans_part_1 = part1()
 ans_part_2 = part2()
@@ -46,5 +76,5 @@ ans_part_2 = part2()
 print("Part1 solution: ", ans_part_1)
 print("Part2 solution: ", ans_part_2)
 
-# assert ans_part_1 == 3620
+assert ans_part_1 == "BGJCNLQUYIFMOEZTADKSPVXRHW"
 # assert ans_part_2 == 39930
