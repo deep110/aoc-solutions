@@ -22,8 +22,19 @@ As always day01 is just warming up. Some regex and Counter did the trick.
 * [Day 10 Python](10/d10.py): iterative DFS (**R**)
 * [Day 11 Python](11/d11.py): that you don't have to store everything that you count, just like [twice](https://github.com/Leftfish/Advent-of-Code-2021/blob/main/06/d06.py) in [2021](https://github.com/Leftfish/Advent-of-Code-2021/blob/main/14/d14.py) (**R**)
 * [Day 12 Python](12/d12.py): BFS (**R**), finding islands in 2d grid (**R**) and finding sides of a 2D polygon (**L**)
-* [Day 13 Python](13/d13.py): linear algebra (**I**) and Cramer's rule (**L**)
-* [Day 14 Python](14/d14.py): using modulo (**R**) and saving plots made in matplotlib (**L**) (which I tried in a buggy solution what didn't make it to the final one) -->
+* [Day 13 Python](13/d13.py): linear algebra (**I**) and Cramer's rule (**L**)  -->
+* [Day 14 Python](day14/solution.py):
+
+Part1 is straightforward, nothing much to say here.
+Part2, I implemented in two ways, one is iterating every second and checking for horizontal lines.
+
+Another idea, i got from reddit is find the offset of horizontal and vertical lines, and use loop or [chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem) to find N that will have these offsets at first occurrence i.e
+
+```
+x_offset = N % 101
+y_offset = N % 103
+```
+
 * [Day 15 Python](day15/solution.py):
 
 For part1, In moving box, one trick of optimizing is just teleport the box to first free position we find. Its equivalent of shifting all the boxes.
