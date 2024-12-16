@@ -1,32 +1,85 @@
 # Advent of Code 2024
 
-
-
 As every year, shout out to the wonderful [AoC community on reddit](https://www.reddit.com/r/adventofcode/).
 
 Overview of Problems in 2024:
 
-* [Day 1 Python](day01/solution.py):
+### [Day 1 Python](day01/solution.py)
 
-As always day01 is just warming up. Some regex and Counter did the trick.
+As always day1 is just warming up. Some regex and Counter did the trick.
 
-<!-- * [Day 2 Python](day02/solution.py):
+### [Day 2 Python](day02/solution.py)
 
-* [Day 3 Python](03/d03.py): using logical operators in regex (**I**)
-* [Day 4 Python](04/d04.py): operations on numpy arrays (rotate, diagonals) (**I**)
-* [Day 5 Python](05/d05.py): set operations (**R**) and writing custom comparator for functools.cmp_to_key (**R**)
-* [Day 6 Python](06/d06.py): storing grids in dictionaries (**R**)
-* [Day 7 Python](07/d07.py): BFS (**R**) and Python operator (**R**) for a solution that's inefficient, but works; recursion (**I**) for an improved and much faster solution
-* [Day 8 Python](08/d08.py): set operations (**R**)
-* [Day 9 Python](09/d09.py): OH GOSH, WHAT THE HELL WAS THAT. Spent far too many hours debugging a seemingly simple solution, ended up refreshing itertools.cycle (**R**), deques (**R**) and thinking with pointers (**R**) before figuring out where the bug was
-* [Day 10 Python](10/d10.py): iterative DFS (**R**)
-* [Day 11 Python](11/d11.py): that you don't have to store everything that you count, just like [twice](https://github.com/Leftfish/Advent-of-Code-2021/blob/main/06/d06.py) in [2021](https://github.com/Leftfish/Advent-of-Code-2021/blob/main/14/d14.py) (**R**)
-* [Day 12 Python](12/d12.py): BFS (**R**), finding islands in 2d grid (**R**) and finding sides of a 2D polygon (**L**) -->
-* [Day 13 Python](day13/solution.py): 
+For Part1, Checking monotonicity on diffs worked.
+
+For Part2, just iterate, remove number and check. Not complicated.
+
+### [Day 3 Python](day03/solution.py)
+
+Regex did the trick, no surprises here.
+
+### [Day 4 Python](day04/solution.py)
+
+For Part1, find every `X` and search in all eight directions.
+
+For Part2, find every `A` and search diagonally for `MAS` or `SAM`
+
+### [Day 5 Python](day05/solution.py)
+
+Wanted to write a custom comparator using `functools.cmp_to_key` but was not able to get it working. 
+At the end went with dictionary and O[n^2] loop.
+
+For Part2, swap and check if report is safe, using the code from Part1.
+
+### [Day 6 Python](day06/solution.py)
+
+Part1 was simple enough, move around the grid until you exit. Didn't do any optimization since simulating one step at a time is good enough.
+
+For Part2, answer is to put obstacle on each point of original guard path and check if path is looped. Did some optimizations:
+- First optimization, don't start for checking path loop from start but just before the obstacle position. It is because after obstacle path is going to change, hence why check from start. It bought my brute force approach time from ~10s to 2.5s. But my challenge was to get a solution under 1s.
+- Second optimization, only save visited states at turns during loop check. This bought the runtime to around ~0.5s. Not very happy but good enough.
+
+There is one optimization that can be done, is instead of going 1 step at a time, teleport to turns. My challenge was done, and I did not had enough motivation to do this.
+
+### [Day 7 Python](day07/solution.py)
+
+At high level, this is just about permutations.
+
+For Part1, just did a brute force on permutations using recursion.
+
+For Part2, brute also worked, but it took long enough 3-4s to get an answer. Got a hint from reddit, though wasn't looking for it. Instead of starting from first number, start from last, it will prune lot of unwanted branches a lot faster. 
+
+### [Day 8 Python](08/solution.py)
+
+It was easy enough, required some set operations, thats all.
+
+### [Day 9 Python](day09/solution.py)
+
+Part1 was okay, got it right in first try.
+
+Solving Part2 was not hard for me. Hard part was optimizing it to run in <1s. I had to create a custom class to code clean and understandable. There were two optimization I did:
+- First, kept empty length pre calculated instead of calculating every time
+- Second, kept track of fully filled blocks.
+Still my solution takes around 0.45s, I am not happy with this runtime, but don't have motivation to rethink it. People on reddit have given a [O[n] solution](https://www.reddit.com/r/adventofcode/comments/1hab624/2024_day_9_part_2_best_i_can_do_is_ond_log_n_is/) instead O[nlog(n)].
+
+
+### [Day 10 Python](day10/solution.py)
+
+DFS worked. And like a [common meme on reddit](https://www.reddit.com/r/adventofcode/comments/1haulfr/2024_day_10_part_2_when_your_first_attempt_at/), I did Part2 before Part1.
+
+### [Day 11 Python](day11/solution.py)
+
+Part1, did an brute force and got an answer quickly.
+
+Part2, after seeing my code running for 20-30mins i realized brute force is not going to work. First I started with storing transformations, then the number of stones which did the trick.
+
+<!-- * [Day 12 Python](12/d12.py): BFS (**R**), finding islands in 2d grid (**R**) and finding sides of a 2D polygon (**L**) -->
+
+### [Day 13 Python](day13/solution.py)
 
 This was easy, i didn't went for brute force. It was simple pair of linear equations solved by linear algebra [I used that] or Cramer's rule.
 
-* [Day 14 Python](day14/solution.py):
+### [Day 14 Python](day14/solution.py)
 
 Part1 is straightforward, nothing much to say here.
 Part2, I implemented in two ways, one is iterating every second and checking for horizontal lines.
@@ -38,7 +91,7 @@ N = x_offset * a % 101
 N = y_offset * b % 103
 ```
 
-* [Day 15 Python](day15/solution.py):
+### [Day 15 Python](day15/solution.py)
 
 For part1, In moving box, one trick of optimizing is just teleport the box to first free position we find. Its equivalent of shifting all the boxes.
 
