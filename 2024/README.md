@@ -99,3 +99,24 @@ For part2, Break the moves in horizontal and vertical direction.
 
 For horizontal it is simple, just shift the blocks using list comprehension. For vertical, use a DFS to find if block can move. Also keep list of blocks with coords. At end if blocks can move, use the list that was made and apply it.
 One edge case I missed was, two blocks referencing same block and getting added to list twice. Added a check for that.
+
+
+### [Day 17 Python](day17/solution.py)
+
+Part 1, was easy enough, nothing hard there.
+
+Part2, had me up for multiple days. First I was trying brute force, but then quickly realized, it is not going to work and especially with < 1s challenge. Got some hints from reddit to look into what program does actually. 
+
+```py
+while True:
+    regB = (regA % 8) ^ 1
+    regC = regA // (2**regB)
+    regB = regB ^ regC ^ 6
+    regA = regA // 8
+
+    output.append(regB % 8)
+    if regA == 0:
+        break
+```
+
+Even after understanding the program took me some time to get the code working.
