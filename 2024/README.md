@@ -101,6 +101,13 @@ For horizontal it is simple, just shift the blocks using list comprehension. For
 One edge case I missed was, two blocks referencing same block and getting added to list twice. Added a check for that.
 
 
+### [Day 16 Python](day16/solution.py)
+
+Since we know the start and end node, I used Astar algorithm. Idea is to use manhattan distance as heuristic metric and step and turn cost as actual cost. 
+
+For part2, I had to think and try out the modifications, at end figured out that I am keeping single source value for every destination, changing that to list helped to keep track of multiple looping paths with same cost.
+
+
 ### [Day 17 Python](day17/solution.py)
 
 Part 1, was easy enough, nothing hard there.
