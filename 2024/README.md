@@ -127,3 +127,10 @@ while True:
 ```
 
 Even after understanding the program took me some time to get the code working.
+
+
+### [Day 18 Python](day18/solution.py)
+
+This day is very simple, I used my Day16 A* search code. Later realized cost is always 1 and heuristics is just adding more calculations and is not actually need. 
+
+For Part2, first I iterated over the input to get the correct answer, but then saw that it is taking a lot of time. I was thinking of adding memoization, but smart folks on reddit suggested to try binary search, which reduced my time from 18s to few milliseconds.
