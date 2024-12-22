@@ -34,7 +34,6 @@ def a_star_search(grid, start, end, heuristic_func, cost_func):
 
         # Check if we have reached the end
         if current[:2] == end[:2]:
-            # print("path found", current)
             unique_tiles = set()
             reconstruct_path(came_from, current, unique_tiles)
             return g_score[current], unique_tiles
@@ -108,11 +107,11 @@ def part12():
     assert grid[start_position[0]][start_position[1]] == "S"
     assert grid[end_position[0]][end_position[1]] == "E"
 
-    path = a_star_search(
+    min_cost, path = a_star_search(
         grid, start_position, end_position, heuristic_func=heuristic, cost_func=cost
     )
 
-    return path[0], len(path[1])
+    return min_cost, len(path)
 
 
 ans_part_1, ans_part_2 = part12()

@@ -23,9 +23,11 @@ assert ans_part_1 == 0
 assert ans_part_2 == 0
 """
 
+
 def print_usage():
     print("Usage:", argv[0], "YEAR DAY")
     exit(1)
+
 
 def to_int(i, name):
     try:
@@ -52,5 +54,8 @@ dir_name = "{}/day{:02}".format(year, day)
 os.makedirs(dir_name, exist_ok=True)
 
 if not os.path.exists(dir_name + "/solution.py"):
-    with open(dir_name + "/solution.py", "w") as f:
+    with open(f"{dir_name}/solution.py", "w") as f:
         f.write(SOLUTION_TEMPLATE)
+
+    with open(f"{dir_name}/input.txt", "w") as f:
+        f.write("")

@@ -134,3 +134,9 @@ Even after understanding the program took me some time to get the code working.
 This day is very simple, I used my Day16 A* search code. Later realized cost is always 1 and heuristics is just adding more calculations and is not actually need. 
 
 For Part2, first I iterated over the input to get the correct answer, but then saw that it is taking a lot of time. I was thinking of adding memoization, but smart folks on reddit suggested to try binary search, which reduced my time from 18s to few milliseconds.
+
+
+### [Day 22 Python](day22/solution.py)
+
+Problem was easy, main challenge was to reduce the runtime under 1s. My time is almost 2.2s after all the optimizations I can think of or people did on reddit. I guess it is one of those problems where you have to live with it.
+
