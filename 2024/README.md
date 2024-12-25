@@ -136,6 +136,12 @@ This day is very simple, I used my Day16 A* search code. Later realized cost is 
 For Part2, first I iterated over the input to get the correct answer, but then saw that it is taking a lot of time. I was thinking of adding memoization, but smart folks on reddit suggested to try binary search, which reduced my time from 18s to few milliseconds.
 
 
+### [Day 19 Python](day19/solution.py)
+
+I was on wrong track, tried using lot of logic for backtracking etc. Got some hints from reddit to use a recursive solution, which clicked with me.
+For Part2, I had to use a memoization to get the result quickly. Later I combined both part1 and part2 into single function.
+
+
 ### [Day 22 Python](day22/solution.py)
 
 Problem was easy, main challenge was to reduce the runtime under 1s. My time is almost 2.2s after all the optimizations I can think of or people did on reddit. I guess it is one of those problems where you have to live with it.
