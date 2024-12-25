@@ -1,6 +1,5 @@
 from collections import defaultdict
 from os import path
-from itertools import combinations
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
     ms = f.readlines()

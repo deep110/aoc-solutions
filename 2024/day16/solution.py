@@ -11,7 +11,8 @@ start_position = (len(grid) - 2, 1, DIRECTION[1])
 end_position = (1, len(grid) - 2, None)
 
 
-def a_star_search(grid, start, end, heuristic_func, cost_func):
+# we are not using heuristic since it is not adding much value
+def a_star_search(grid, start, end, cost_func):
     # Initialize open and closed sets
     open_set = set()
     closed_set = set()
@@ -25,12 +26,9 @@ def a_star_search(grid, start, end, heuristic_func, cost_func):
     # Dictionary to store the cost from start to each node
     g_score = {start: 0}
 
-    # Dictionary to store the estimated total cost (g_score + heuristic)
-    f_score = {start: heuristic_func(start, end)}
-
     while open_set:
         # Find the node in open set with the lowest f_score
-        current = min(open_set, key=lambda x: f_score[x])
+        current = min(open_set, key=lambda x: g_score[x])
 
         # Check if we have reached the end
         if current[:2] == end[:2]:
@@ -61,7 +59,6 @@ def a_star_search(grid, start, end, heuristic_func, cost_func):
             if neighbor not in open_set or tentative_g_score < g_score_neigh:
                 came_from[neighbor] = [current]
                 g_score[neighbor] = tentative_g_score
-                f_score[neighbor] = g_score[neighbor] + heuristic_func(neighbor, end)
                 open_set.add(neighbor)
 
     return 0, None
@@ -88,11 +85,6 @@ def get_neighbors(grid, node):
     return neighbors
 
 
-# lets use manhattan distance
-def heuristic(node, end):
-    return abs(node[0] - end[0]) + abs(node[1] - end[1])
-
-
 def cost(node1, node2):
     if node1[2] == node2[2]:
         return 1
@@ -107,9 +99,7 @@ def part12():
     assert grid[start_position[0]][start_position[1]] == "S"
     assert grid[end_position[0]][end_position[1]] == "E"
 
-    min_cost, path = a_star_search(
-        grid, start_position, end_position, heuristic_func=heuristic, cost_func=cost
-    )
+    min_cost, path = a_star_search(grid, start_position, end_position, cost_func=cost)
 
     return min_cost, len(path)
 

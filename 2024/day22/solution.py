@@ -9,35 +9,26 @@ numbers = list(map(lambda x: int(x), ms))
 MASK = 16777216 - 1  # 2 ^ 24 - 1
 
 
-def part1():
+def part12():
     total_sum = 0
-    all_prices = []
+    num_monkeys = len(numbers)
+    num_changes = 2000
+    all_sequences_total_bananas = defaultdict(int)
+    delta = [0] * num_changes
 
     for num in numbers:
         sn = num
         price = [sn % 10]
-        for _ in range(2000):
+        seen_seq = set()
+
+        for i in range(2000):
             sn = ((sn << 6) ^ sn) & MASK
-            sn = ((sn >> 5) ^ sn) & MASK
+            # we can remove AND since,
+            # the result of the first prune step is guaranteed to be below 2^24,
+            # the second prune step is a no-op
+            sn = (sn >> 5) ^ sn
             sn = ((sn << 11) ^ sn) & MASK
             price.append(sn % 10)
-
-        all_prices.append(price)
-        total_sum += sn
-
-    return total_sum, all_prices
-
-
-def part2(prices):
-    num_monkeys = len(prices)
-    num_changes = 2000
-    all_sequences_total_bananas = defaultdict(int)
-
-    delta = [0] * num_changes
-    for m in range(num_monkeys):
-        seen_seq = set()
-        price = prices[m]
-        for i in range(0, num_changes):
             delta[i] = price[i + 1] - price[i]
 
         # converts into 4 bits of base 20 since there are 19 unique values
@@ -57,11 +48,12 @@ def part2(prices):
                 all_sequences_total_bananas[key] += price[i]
                 seen_seq.add(key)
 
-    return max(all_sequences_total_bananas.values())
+        total_sum += sn
+
+    return total_sum, max(all_sequences_total_bananas.values())
 
 
-ans_part_1, prices = part1()
-ans_part_2 = part2(prices)
+ans_part_1, ans_part_2 = part12()
 
 print("Part1 solution: ", ans_part_1)
 print("Part2 solution: ", ans_part_2)

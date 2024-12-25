@@ -18,23 +18,26 @@ def is_safe(report):
         return True
 
 
-def part1():
-    return [is_safe(report) for report in reports].count(True)
-
-
-def part2():
+def part12():
+    original_safe = 0
     safes = 0
     for report in reports:
         if is_safe(report):
             safes += 1
+            original_safe += 1
             continue
-        for i in range(len(report)): 
-           if is_safe(report[:i] + report[i+1:]):
-               safes += 1
-               break
+        for i in range(len(report)):
+            if is_safe(report[:i] + report[i + 1 :]):
+                safes += 1
+                break
 
-    return safes
+    return original_safe, safes
 
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1, ans_part_2 = part12()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 220
+assert ans_part_2 == 296

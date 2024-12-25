@@ -66,6 +66,7 @@ def part2():
     file_id = 0
     disk: List[File] = []
     file_index = []
+    memo = [0] * 10
 
     for i in range(len(ms)):
         block = int(ms[i])
@@ -79,21 +80,27 @@ def part2():
                 disk.append(f)
     file_index.reverse()
 
-    start_empty_idx = 1
     for j in file_index:
         file_block: File = disk[j]
-        can_increment = True
+
         # find an empty block that can fit it
-        for k in range(start_empty_idx, j):
+        start_idx = memo[file_block.size]
+        if start_idx is None:
+            continue
+
+        for k in range(start_idx, j):
             to_check_block = disk[k]
-            if can_increment and to_check_block.empty_len == 0:
-                start_empty_idx = k + 1
-            else:
-                can_increment = False
-                if to_check_block.empty_len >= file_block.size:
-                    to_check_block.fill(file_block)
-                    file_block.empty()
-                    break
+            if to_check_block.empty_len >= file_block.size:
+                to_check_block.fill(file_block)
+
+                # we set the memo to the file size we found, since all the files
+                # before this had less empty space than this size
+                memo[file_block.size] = k
+                file_block.empty()
+                break
+
+            if k == j - 1:
+                memo[file_block.size] = None
 
     checksum = 0
     idx = 0

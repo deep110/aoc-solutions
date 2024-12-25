@@ -1,7 +1,12 @@
 import os
-from time import time
+import importlib.util
+import sys
+import time
 from sys import argv
-import subprocess
+import io
+from contextlib import redirect_stdout
+import traceback
+from typing import Optional, Tuple
 
 
 def print_usage():
@@ -17,34 +22,103 @@ def to_int(i, name):
         print_usage()
 
 
+def load_solution_module(
+    year: int, day: int, suppress_output: bool = True
+) -> Optional[Tuple[float, bool, str]]:
+    """
+    Load and run a solution module for a specific day, measuring its runtime.
+
+    Returns:
+    Tuple of (runtime in ms, success boolean, error message if any)
+    """
+    solution_file = f"{year}/day{day:02}/solution.py"
+
+    if not os.path.isfile(solution_file):
+        return None
+
+    try:
+        # Get the absolute path and setup the spec
+        abs_path = os.path.abspath(solution_file)
+        module_name = f"solution_y{year}_d{day}"
+        spec = importlib.util.spec_from_file_location(module_name, abs_path)
+
+        if spec is None or spec.loader is None:
+            return 0, False, f"Failed to create module spec for day {day}"
+
+        # Create the module and execute it
+        module = importlib.util.module_from_spec(spec)
+
+        # Change to the solution directory
+        original_dir = os.getcwd()
+        os.chdir(os.path.dirname(abs_path))
+
+        # Time the execution
+        start = time.perf_counter()
+        try:
+            if suppress_output:
+                # Redirect stdout to devnull when suppressing output
+                with redirect_stdout(io.StringIO()):
+                    spec.loader.exec_module(module)
+            else:
+                spec.loader.exec_module(module)
+            success = True
+            error_msg = ""
+        except Exception as e:
+            success = False
+            # Get the full traceback information
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            error_msg = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
+        finally:
+            end = time.perf_counter()
+            runtime_ms = (end - start) * 1000
+
+        os.chdir(original_dir)
+
+        return runtime_ms, success, error_msg
+
+    except Exception as e:
+        # Get the full traceback information
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        tb_str = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
+        return 0, False, tb_str
+
+
 if len(argv) == 2:
     year = to_int(1, "YEAR")
+    total_time = 0
 
     print("| Day | Runtime | Status |")
-    print("|-----|---------|--------|")
+    print("|----|---------|--------|")
 
     # run for all days
     for day in range(1, 26):
-        if os.path.isfile(f"{year}/day{day:02}/solution.py"):
-            t1 = time()
-            result = subprocess.run(
-                ["python", f"{year}/day{day:02}/solution.py"],
-                capture_output=True,
-            )
-            t2 = time()
-            runtime = t2 - t1
-            status = "✅" if result.returncode == 0 else "❌"
+        result = load_solution_module(year, day)
+        if result is None:
+            continue
 
-            print(f"| {day:02d} | {runtime:.4f}s | {status} |")
-    print("|-----|---------|--------|")
+        runtime, success, error = result
+        status = "✅" if success else "❌"
+
+        if success:
+            total_time += runtime
+
+        print(f"| {day:02d} | {runtime:.2f}ms | {status} |")
+
+    print("|----|---------|--------|")
+
+    print(f"Time taken in {year}: ", total_time, "ms")
 
 elif len(argv) == 3:
     year = to_int(1, "YEAR")
     day = to_int(2, "DAY")
 
-    t1 = time()
-    result = subprocess.call(["python", f"{year}/day{day:02}/solution.py"])
-    t2 = time()
-    print(f"Time taken: {(t2-t1):.4f}s")
+    result = load_solution_module(year, day, suppress_output=False)
+    if result is None:
+        print("No solution found")
+    else:
+        runtime, success, error = result
+        print(f"Time taken: {runtime}ms")
+        if error:
+            print(error)
 else:
     print_usage()
