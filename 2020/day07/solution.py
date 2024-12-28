@@ -1,3 +1,4 @@
+from collections import defaultdict
 from os import path
 import re
 
@@ -10,7 +11,8 @@ BPAT = re.compile(r"(\d+) (.*) bags?")
 ms = list(map(lambda x: x.strip(), ms))
 
 tree = {}
-reverse_tree = {}
+reverse_tree = defaultdict(list)
+
 
 def get_bag(x):
     m = BPAT.search(x.strip())
@@ -19,6 +21,7 @@ def get_bag(x):
     else:
         return (None, 0)
 
+
 for i in ms:
     m = PAT.search(i)
     a = m[1]
@@ -26,10 +29,8 @@ for i in ms:
 
     tree[a] = b
     for j in b:
-        if j[0] not in reverse_tree:
-            reverse_tree[j[0]] = [a]
-        else:
-            reverse_tree[j[0]].append(a)
+        reverse_tree[j[0]].append(a)
+
 
 def part1():
     bags_sg = reverse_tree["shiny gold"]
@@ -47,14 +48,21 @@ def part1():
 def part2(bag_name="shiny gold"):
     bags = tree[bag_name]
     if len(bags) == 1 and bags[0][0] is None:
-            return 0
-    
+        return 0
+
     k = 0
     for i in bags:
         bn, c = i
         k += c + c * part2(bn)
 
     return k
-        
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+
+
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 164
+assert ans_part_2 == 7872

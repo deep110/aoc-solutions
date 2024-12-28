@@ -88,7 +88,7 @@ if len(argv) == 2:
     total_time = 0
 
     print("| Day | Runtime | Status |")
-    print("|----|---------|--------|")
+    print("|----|--------|----|")
 
     # run for all days
     for day in range(1, 26):
@@ -104,7 +104,7 @@ if len(argv) == 2:
 
         print(f"| {day:02d} | {runtime:.2f}ms | {status} |")
 
-    print("|----|---------|--------|")
+    print("|----|--------|----|")
 
     print(f"Time taken in {year}: ", total_time, "ms")
 

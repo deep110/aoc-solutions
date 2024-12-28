@@ -5,6 +5,7 @@ with open(path.join(path.dirname(__file__), "input.txt")) as f:
 
 ms = ms.split("\n\n")
 
+
 def part1():
     c = 0
     for i in ms:
@@ -12,6 +13,7 @@ def part1():
         c += len(j)
 
     return c
+
 
 def part2():
     c = 0
@@ -22,5 +24,12 @@ def part2():
 
     return c
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 6437
+assert ans_part_2 == 3229

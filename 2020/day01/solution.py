@@ -5,29 +5,28 @@ with open(path.join(path.dirname(__file__), "input.txt")) as f:
 
 ms = list(map(lambda x: int(x.strip()), ms))
 _ms_set = set(ms)
-_sum = 2020
+REQUIRED_SUM = 2020
+
 
 def part1():
-    a, b = (None, None)
-
     for i in ms:
-        if (_sum - i) in _ms_set:
-            a, b = (i, _sum - i)
-            break
+        if (REQUIRED_SUM - i) in _ms_set:
+            return i * (REQUIRED_SUM - i)
 
-    return a*b
 
 def part2():
-    a, b, c = (None, None, None)
-
     for i in ms:
         for j in ms:
-            k = _sum - i - j
+            k = REQUIRED_SUM - i - j
             if k in _ms_set:
-                a, b, c = (i, j, k)
-                break
+                return i * j * k
 
-    return a * b * c
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 956091
+assert ans_part_2 == 79734368

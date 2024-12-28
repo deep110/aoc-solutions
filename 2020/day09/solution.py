@@ -7,20 +7,22 @@ ms = list(map(lambda x: int(x), ms))
 
 PREAMBLE_LEN = 25
 
+
 def is_sum_exists(num, array_inputs):
     for i in range(0, len(array_inputs)):
         diff = num - array_inputs[i]
         if diff > 0:
-            for j in range(i+1, len(array_inputs)):
+            for j in range(i + 1, len(array_inputs)):
                 if diff == array_inputs[j]:
                     return True
     return False
+
 
 def part1():
     invalid_num = -1
     for i, num in enumerate(ms[PREAMBLE_LEN:]):
         # since index starts from preamble_length
-        nums = ms[i:i + PREAMBLE_LEN]
+        nums = ms[i : i + PREAMBLE_LEN]
         is_ex = is_sum_exists(num, nums)
         if not is_ex:
             invalid_num = num
@@ -41,10 +43,15 @@ def part2(invalid_num):
             ei = i
             break
 
-    _range = ms[si:ei+1]
+    _range = ms[si : ei + 1]
     return min(_range) + max(_range)
 
 
-invalid_num = part1()
-print("Part1 solution: ", invalid_num)
-print("Part2 solution: ", part2(invalid_num))  
+ans_part_1 = part1()
+ans_part_2 = part2(ans_part_1)
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 1309761972
+assert ans_part_2 == 177989832
