@@ -54,8 +54,8 @@ Total time (avg): `3490 ms`
 | 8 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Source](2020/day08/solution.py) | 3.2 |
 | 9 | [Encoding Error](https://adventofcode.com/2020/day/9) | [Source](2020/day09/solution.py) | 1.2 |
 | 10 | [Adapter Array](https://adventofcode.com/2020/day/10) | [Source](2020/day10/solution.py) | 0.1 |
-| 11 | [Seating System](https://adventofcode.com/2020/day/11) | [Source](2020/day11/solution.py) | - |
-| 12 | [Rain Risk](https://adventofcode.com/2020/day/12) | [Source](2020/day12/solution.py) | - |
+| 11 | [Seating System](https://adventofcode.com/2020/day/11) | [Source](2020/day11/solution.py) | 360 |
+| 12 | [Rain Risk](https://adventofcode.com/2020/day/12) | [Source](2020/day12/solution.py) | 0.47 |
 | 13 | [Shuttle Search](https://adventofcode.com/2020/day/13) | [Source](2020/day13/solution.py) | - |
 | 14 | [Docking Data](https://adventofcode.com/2020/day/14) | [Source](2020/day14/solution.py) | - |
 | 15 | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | [Source](2020/day15/solution.py) | - |
@@ -70,4 +70,4 @@ Total time (avg): `3490 ms`
 | 24 | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Source](2020/day24/solution.py) | - |
 | 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Source](2020/day25/solution.py) | - |
 
-Total time (avg): `13 ms`
+Total time (avg): `376 ms`

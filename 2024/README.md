@@ -4,34 +4,34 @@ As every year, shout out to the wonderful [AoC community on reddit](https://www.
 
 Overview of Problems in 2024:
 
-### [Day 1 Python](day01/solution.py)
+### [Day 1](day01/solution.py)
 
 As always day1 is just warming up. Some regex and Counter did the trick.
 
-### [Day 2 Python](day02/solution.py)
+### [Day 2](day02/solution.py)
 
 For Part1, Checking monotonicity on diffs worked.
 
 For Part2, just iterate, remove number and check. Not complicated.
 
-### [Day 3 Python](day03/solution.py)
+### [Day 3](day03/solution.py)
 
 Regex did the trick, no surprises here.
 
-### [Day 4 Python](day04/solution.py)
+### [Day 4](day04/solution.py)
 
 For Part1, find every `X` and search in all eight directions.
 
 For Part2, find every `A` and search diagonally for `MAS` or `SAM`
 
-### [Day 5 Python](day05/solution.py)
+### [Day 5](day05/solution.py)
 
 Wanted to write a custom comparator using `functools.cmp_to_key` but was not able to get it working. 
 At the end went with dictionary and O[n^2] loop.
 
 For Part2, swap and check if report is safe, using the code from Part1.
 
-### [Day 6 Python](day06/solution.py)
+### [Day 6](day06/solution.py)
 
 Part1 was simple enough, move around the grid until you exit. Didn't do any optimization since simulating one step at a time is good enough.
 
@@ -41,7 +41,7 @@ For Part2, answer is to put obstacle on each point of original guard path and ch
 
 There is one optimization that can be done, is instead of going 1 step at a time, teleport to turns. My challenge was done, and I did not had enough motivation to do this.
 
-### [Day 7 Python](day07/solution.py)
+### [Day 7](day07/solution.py)
 
 At high level, this is just about permutations.
 
@@ -49,11 +49,11 @@ For Part1, just did a brute force on permutations using recursion.
 
 For Part2, brute also worked, but it took long enough 3-4s to get an answer. Got a hint from reddit, though wasn't looking for it. Instead of starting from first number, start from last, it will prune lot of unwanted branches a lot faster. 
 
-### [Day 8 Python](08/solution.py)
+### [Day 8](08/solution.py)
 
 It was easy enough, required some set operations, thats all.
 
-### [Day 9 Python](day09/solution.py)
+### [Day 9](day09/solution.py)
 
 Part1 was okay, got it right in first try.
 
@@ -63,23 +63,23 @@ Solving Part2 was not hard for me. Hard part was optimizing it to run in <1s. I 
 Still my solution takes around 0.45s, I am not happy with this runtime, but don't have motivation to rethink it. People on reddit have given a [O[n] solution](https://www.reddit.com/r/adventofcode/comments/1hab624/2024_day_9_part_2_best_i_can_do_is_ond_log_n_is/) instead O[nlog(n)].
 
 
-### [Day 10 Python](day10/solution.py)
+### [Day 10](day10/solution.py)
 
 DFS worked. And like a [common meme on reddit](https://www.reddit.com/r/adventofcode/comments/1haulfr/2024_day_10_part_2_when_your_first_attempt_at/), I did Part2 before Part1.
 
-### [Day 11 Python](day11/solution.py)
+### [Day 11](day11/solution.py)
 
 Part1, did an brute force and got an answer quickly.
 
 Part2, after seeing my code running for 20-30mins i realized brute force is not going to work. First I started with storing transformations, then the number of stones which did the trick.
 
-<!-- * [Day 12 Python](12/d12.py): BFS (**R**), finding islands in 2d grid (**R**) and finding sides of a 2D polygon (**L**) -->
+<!-- * [Day 12](12/d12.py): BFS (**R**), finding islands in 2d grid (**R**) and finding sides of a 2D polygon (**L**) -->
 
-### [Day 13 Python](day13/solution.py)
+### [Day 13](day13/solution.py)
 
 This was easy, i didn't went for brute force. It was simple pair of linear equations solved by linear algebra [I used that] or Cramer's rule.
 
-### [Day 14 Python](day14/solution.py)
+### [Day 14](day14/solution.py)
 
 Part1 is straightforward, nothing much to say here.
 Part2, I implemented in two ways, one is iterating every second and checking for horizontal lines.
@@ -91,7 +91,7 @@ N = x_offset * a % 101
 N = y_offset * b % 103
 ```
 
-### [Day 15 Python](day15/solution.py)
+### [Day 15](day15/solution.py)
 
 For part1, In moving box, one trick of optimizing is just teleport the box to first free position we find. Its equivalent of shifting all the boxes.
 
@@ -101,14 +101,14 @@ For horizontal it is simple, just shift the blocks using list comprehension. For
 One edge case I missed was, two blocks referencing same block and getting added to list twice. Added a check for that.
 
 
-### [Day 16 Python](day16/solution.py)
+### [Day 16](day16/solution.py)
 
 Since we know the start and end node, I used Astar algorithm. Idea is to use manhattan distance as heuristic metric and step and turn cost as actual cost. 
 
 For part2, I had to think and try out the modifications, at end figured out that I am keeping single source value for every destination, changing that to list helped to keep track of multiple looping paths with same cost.
 
 
-### [Day 17 Python](day17/solution.py)
+### [Day 17](day17/solution.py)
 
 Part 1, was easy enough, nothing hard there.
 
@@ -129,20 +129,20 @@ while True:
 Even after understanding the program took me some time to get the code working.
 
 
-### [Day 18 Python](day18/solution.py)
+### [Day 18](day18/solution.py)
 
 This day is very simple, I used my Day16 A* search code. Later realized cost is always 1 and heuristics is just adding more calculations and is not actually need. 
 
 For Part2, first I iterated over the input to get the correct answer, but then saw that it is taking a lot of time. I was thinking of adding memoization, but smart folks on reddit suggested to try binary search, which reduced my time from 18s to few milliseconds.
 
 
-### [Day 19 Python](day19/solution.py)
+### [Day 19](day19/solution.py)
 
 I was on wrong track, tried using lot of logic for backtracking etc. Got some hints from reddit to use a recursive solution, which clicked with me.
 For Part2, I had to use a memoization to get the result quickly. Later I combined both part1 and part2 into single function.
 
 
-### [Day 22 Python](day22/solution.py)
+### [Day 22](day22/solution.py)
 
 Problem was easy, main challenge was to reduce the runtime under 1s. My time is almost 2.2s after all the optimizations I can think of or people did on reddit. I guess it is one of those problems where you have to live with it.
 
