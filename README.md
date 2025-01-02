@@ -29,7 +29,7 @@ library such as numpy.
 | 16 | [Reindeer Maze](https://adventofcode.com/2024/day/16) | [Source](2024/day16/solution.py) | 282 |
 | 17 | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | [Source](2024/day17/solution.py) | 3.79 |
 | 18 | [RAM Run](https://adventofcode.com/2024/day/18) | [Source](2024/day18/solution.py) | 34 |
-| 19 | [Linen Layout](https://adventofcode.com/2024/day/19) | [Source](2024/day19/solution.py) | 468 |
+| 19 | [Linen Layout](https://adventofcode.com/2024/day/19) | [Source](2024/day19/solution.py) | 31.24 |
 | 20 | [Race Condition](https://adventofcode.com/2024/day/20) | [Source](2024/day20/solution.py) | - |
 | 21 | [Keypad Conundrum](https://adventofcode.com/2024/day/21) | [Source](2024/day21/solution.py) | - |
 | 22 | [Monkey Market](https://adventofcode.com/2024/day/22) | [Source](2024/day22/solution.py) | 2040 |
@@ -37,7 +37,7 @@ library such as numpy.
 | 24 | [Crossed Wires](https://adventofcode.com/2024/day/24) | [Source](2024/day24/solution.py) | - |
 | 25 | [Code Chronicle](https://adventofcode.com/2024/day/25) | [Source](2024/day25/solution.py) | - |
 
-Total time (avg): `3490 ms`
+Total time (avg): `3040 ms`
 
 
 ## 2020

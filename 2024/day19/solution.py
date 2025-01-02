@@ -1,25 +1,22 @@
 from os import path
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
-
-towels = ms[0].strip().split(", ")
+    ms: list[str] = [x.strip() for x in f.readlines()]
 
 
-def design_possible_count(design, index, cache):
-    if index == len(design):
-        return 1
+towels_set = set(ms[0].split(", "))
 
-    if design[index:] in cache:
-        return cache[design[index:]]
 
-    count = 0
-    for towel in towels:
-        if towel == design[index : index + len(towel)]:
-            kc = design_possible_count(design, index + len(towel), cache)
-            count += kc
+def design_possible_count(design, cache) -> int:
+    if design in cache:
+        return cache[design]
 
-    cache[design[index:]] = count
+    count = int(design in towels_set)
+    for i in range(1, len(design)):
+        if design[0:i] in towels_set:
+            count += design_possible_count(design[i:], cache)
+
+    cache[design] = count
     return count
 
 
@@ -27,14 +24,11 @@ def part12():
     total_possible = 0
     total_possible_count = 0
 
+    cache = {}
     for arrangement in ms[2:]:
-        arrangement = arrangement.strip()
-        cache = {}
-
-        count = design_possible_count(arrangement, 0, cache)
+        count = design_possible_count(arrangement, cache)
         total_possible_count += count
-        if count > 0:
-            total_possible += 1
+        total_possible += int(count > 0)
 
     return total_possible, total_possible_count
 
