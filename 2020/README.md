@@ -13,8 +13,13 @@ Part 1 is again easy and straight forward. Direction shenanigans are done by mod
 
 Part2, required vector rotation, since angles are multiples of 90°, we can avoid trigonometric functions, using complex algebra.
 
-### [Day 13](day12/solution.py)
+### [Day 13](day13/solution.py)
 
 Part1 was straightforward, nothing to think there.
 
 Part2 required to use Chinese remainder theorem, to find answer quickly. Hard part was figuring out the remainders. I used [this reference](https://www.geeksforgeeks.org/implementation-of-chinese-remainder-theorem-inverse-modulo-based-implementation/) to understand the theorem and how to implement it.
+
+
+### [Day 14](day14/solution.py)
+
+For Part2, I am iterating over total number of combinations, ie 2 ^ (number_X), and filling each number's binary representation into locations of X. No need of recursion.
