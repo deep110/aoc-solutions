@@ -59,8 +59,8 @@ Total time (avg): `3040 ms`
 | 13 | [Shuttle Search](https://adventofcode.com/2020/day/13) | [Source](2020/day13/solution.py) | 0.15 |
 | 14 | [Docking Data](https://adventofcode.com/2020/day/14) | [Source](2020/day14/solution.py) | 63.17 |
 | 15 | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | [Source](2020/day15/solution.py) | 2500 |
-| 16 | [Ticket Translation](https://adventofcode.com/2020/day/16) | [Source](2020/day16/solution.py) | - |
-| 17 | [Conway Cubes](https://adventofcode.com/2020/day/17) | [Source](2020/day17/solution.py) | - |
+| 16 | [Ticket Translation](https://adventofcode.com/2020/day/16) | [Source](2020/day16/solution.py) | 3 |
+| 17 | [Conway Cubes](https://adventofcode.com/2020/day/17) | [Source](2020/day17/solution.py) | 116.7 |
 | 18 | [Operation Order](https://adventofcode.com/2020/day/18) | [Source](2020/day18/solution.py) | - |
 | 19 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Source](2020/day19/solution.py) | - |
 | 20 | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20) | [Source](2020/day20/solution.py) | - |
@@ -70,4 +70,4 @@ Total time (avg): `3040 ms`
 | 24 | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Source](2020/day24/solution.py) | - |
 | 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Source](2020/day25/solution.py) | - |
 
-Total time (avg): `2940.91 ms`
+Total time (avg): `3082.39 ms`
