@@ -35,3 +35,9 @@ In my own input, only about 4% of the 3D space ended up being active, and 2% of 
 Also, we are doing reverse, instead of looping on each coordinate and finding active neighbors, we are
 looking into each active coordinate and adding 1 to each neighbor.
 This also helps to speed up a lot, because state change requires some minimum active neighbors to be present, so we only loop on coordinates which has at least 1 active neighbor.
+
+### [Day 18](day18/solution.py)
+
+Part1 was very straight forward, even to do without any string manipulations or using python eval.
+
+For Part2, i had to read up a bit on how algorithmic expressions are evaluated. Came across [Shunting Yard Algorithm](https://mathcenter.oxford.emory.edu/site/cs171/shuntingYardAlgorithm/). This converts infix notation to postfix or reverse Polish notation (RPN). Then we just solve the RPN stack.
