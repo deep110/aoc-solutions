@@ -1,4 +1,3 @@
-from heapq import heappush, heappop
 from os import path
 from typing import Dict, List
 
@@ -34,11 +33,8 @@ def cost(node1, node2):
 # we are not using heuristic since it is not adding much value
 def a_star_search(grid, start, end):
     # Initialize open and closed sets
-    open_set = set()
+    open_set = {start}
     closed_set = set()
-
-    # Add start node to open set
-    open_set.add(start)
 
     came_from: Dict[str, List] = {}
     g_score = {start: 0}
@@ -50,9 +46,7 @@ def a_star_search(grid, start, end):
 
         # Check if we have reached the end
         if current[:2] == end_coord:
-            unique_tiles = set()
-            reconstruct_path(came_from, current, unique_tiles)
-            return g_score[current], unique_tiles
+            return g_score[current], reconstruct_path(came_from, current)
 
         open_set.remove(current)
         closed_set.add(current)
@@ -78,10 +72,15 @@ def a_star_search(grid, start, end):
     return 0, None
 
 
-def reconstruct_path(came_from, current, path: set):
-    path.add(current[:2])
-    for _next in came_from.get(current, []):
-        reconstruct_path(came_from, _next, path)
+def reconstruct_path(came_from, current):
+    path = set()
+    stack = [(current, came_from[current])]
+    while stack:
+        node, parents = stack.pop()
+        path.add(node[:2])
+        for parent in parents:
+            stack.append((parent, came_from.get(parent, [])))
+    return path
 
 
 def part12():

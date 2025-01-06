@@ -1,4 +1,3 @@
-from collections import defaultdict
 from os import path
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
@@ -6,14 +5,15 @@ with open(path.join(path.dirname(__file__), "input.txt")) as f:
 
 numbers = list(map(lambda x: int(x), ms))
 
-MASK = 16777216 - 1  # 2 ^ 24 - 1
+MASK = 16777215  # 2 ^ 24 - 1
+DIV = 19**4
 
 
 def part12():
     total_sum = 0
-    num_monkeys = len(numbers)
     num_changes = 2000
-    all_sequences_total_bananas = defaultdict(int)
+    # all_sequences_total_bananas = defaultdict(int)
+    all_sequences_total_bananas = [0] * DIV
     delta = [0] * num_changes
 
     for num in numbers:
@@ -31,26 +31,21 @@ def part12():
             price.append(sn % 10)
             delta[i] = price[i + 1] - price[i]
 
-        # converts into 4 bits of base 20 since there are 19 unique values
+        # converts into 4 bits of base 19 since there are 19 unique values
+        # 19^3 * (seq[3] + 9) + 19^2 * (seq[2] + 9) + 19 * (seq[1] + 9) + (seq[0] + 9)
         #
-        # 20^3 * (seq[3] + 10) + 20^2 * (seq[2] + 10) + 20 * (seq[1] + 10) + (seq[0] + 10)
+        # since we dont care of exact value just unique value, we can avoid adding 9
 
-        # but with few optimizations, since we dont care of exact value just unique value,
-        # we can avoid adding 10
-        for i in range(4, num_changes + 1):
-            key = (
-                8000 * delta[i - 4]
-                + 400 * delta[i - 3]
-                + 20 * delta[i - 2]
-                + delta[i - 1]
-            )
+        key = delta[0] * 361 + delta[1] * 19 + delta[2]
+        for i in range(3, num_changes):
+            key = (key * 19 + delta[i]) % DIV
             if key not in seen_seq:
-                all_sequences_total_bananas[key] += price[i]
+                all_sequences_total_bananas[key] += price[i + 1]
                 seen_seq.add(key)
 
         total_sum += sn
 
-    return total_sum, max(all_sequences_total_bananas.values())
+    return total_sum, max(all_sequences_total_bananas)
 
 
 ans_part_1, ans_part_2 = part12()

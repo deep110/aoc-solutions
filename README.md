@@ -32,12 +32,12 @@ library such as numpy.
 | 19 | [Linen Layout](https://adventofcode.com/2024/day/19) | [Source](2024/day19/solution.py) | 31.24 |
 | 20 | [Race Condition](https://adventofcode.com/2024/day/20) | [Source](2024/day20/solution.py) | - |
 | 21 | [Keypad Conundrum](https://adventofcode.com/2024/day/21) | [Source](2024/day21/solution.py) | - |
-| 22 | [Monkey Market](https://adventofcode.com/2024/day/22) | [Source](2024/day22/solution.py) | 2040 |
+| 22 | [Monkey Market](https://adventofcode.com/2024/day/22) | [Source](2024/day22/solution.py) | 1472.4 |
 | 23 | [LAN Party](https://adventofcode.com/2024/day/23) | [Source](2024/day23/solution.py) | - |
 | 24 | [Crossed Wires](https://adventofcode.com/2024/day/24) | [Source](2024/day24/solution.py) | - |
 | 25 | [Code Chronicle](https://adventofcode.com/2024/day/25) | [Source](2024/day25/solution.py) | - |
 
-Total time (avg): `3040 ms`
+Total time (avg): `2480 ms`
 
 
 ## 2020
