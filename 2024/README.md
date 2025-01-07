@@ -146,3 +146,11 @@ For Part2, I had to use a memoization to get the result quickly. Later I combine
 
 Problem was easy, main challenge was to reduce the runtime under 1s. My time is almost 2.2s after all the optimizations I can think of or people did on reddit. I guess it is one of those problems where you have to live with it.
 
+
+### [Day 23](day23/solution.py)
+
+Part1, was okay, was able to work out the solution after thinking for a while.
+
+For part2, i had the basic brute force method in mind. After some research and hints on reddit found out about Bron-Kerbosch algorithm for finding maximal cliques in the graph. Largest Maximal clique was our answer.
+
+Basic implementation of algo, gave the correct answer but was taking around 220ms. Found out about speeding up the algo using pivots to reduce number of vertices we need to process. This reduced the runtime to around 8.2ms.
