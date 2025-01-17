@@ -11,15 +11,15 @@ library such as numpy.
 
 | Day | Problem | Solution | Benchmark (ms) |
 | --- | --- | --- | --: |
-| 1 | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [Source](2024/day01/solution.py) | 1.2 |
-| 2 | [Red-Nosed Reports](https://adventofcode.com/2024/day/2) | [Source](2024/day02/solution.py) | 9.6 |
-| 3 | [Mull It Over](https://adventofcode.com/2024/day/3) | [Source](2024/day03/solution.py) | 1.57 |
-| 4 | [Ceres Search](https://adventofcode.com/2024/day/4) | [Source](2024/day04/solution.py) | 6.63 |
-| 5 | [Print Queue](https://adventofcode.com/2024/day/5) | [Source](2024/day05/solution.py) | 5.03 |
-| 6 | [Guard Gallivant](https://adventofcode.com/2024/day/6) | [Source](2024/day06/solution.py) | 516 |
-| 7 | [Bridge Repair](https://adventofcode.com/2024/day/7) | [Source](2024/day07/solution.py) | 12 |
-| 8 | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | [Source](2024/day08/solution.py) | 0.57 |
-| 9 | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | [Source](2024/day09/solution.py) | 37 |
+| 01 | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [Source](2024/day01/solution.py) | 1.2 |
+| 02 | [Red-Nosed Reports](https://adventofcode.com/2024/day/2) | [Source](2024/day02/solution.py) | 9.6 |
+| 03 | [Mull It Over](https://adventofcode.com/2024/day/3) | [Source](2024/day03/solution.py) | 1.57 |
+| 04 | [Ceres Search](https://adventofcode.com/2024/day/4) | [Source](2024/day04/solution.py) | 6.63 |
+| 05 | [Print Queue](https://adventofcode.com/2024/day/5) | [Source](2024/day05/solution.py) | 5.03 |
+| 06 | [Guard Gallivant](https://adventofcode.com/2024/day/6) | [Source](2024/day06/solution.py) | 60 |
+| 07 | [Bridge Repair](https://adventofcode.com/2024/day/7) | [Source](2024/day07/solution.py) | 12 |
+| 08 | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | [Source](2024/day08/solution.py) | 0.57 |
+| 09 | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | [Source](2024/day09/solution.py) | 37 |
 | 10 | [Hoof It](https://adventofcode.com/2024/day/10) | [Source](2024/day10/solution.py) | 3 |
 | 11 | [Plutonian Pebbles](https://adventofcode.com/2024/day/11) | [Source](2024/day11/solution.py) | 39.3 |
 | 12 | [Garden Groups](https://adventofcode.com/2024/day/12) | [Source](2024/day12/solution.py) | - |
@@ -32,27 +32,27 @@ library such as numpy.
 | 19 | [Linen Layout](https://adventofcode.com/2024/day/19) | [Source](2024/day19/solution.py) | 31.24 |
 | 20 | [Race Condition](https://adventofcode.com/2024/day/20) | [Source](2024/day20/solution.py) | - |
 | 21 | [Keypad Conundrum](https://adventofcode.com/2024/day/21) | [Source](2024/day21/solution.py) | - |
-| 22 | [Monkey Market](https://adventofcode.com/2024/day/22) | [Source](2024/day22/solution.py) | 1472.4 |
+| 22 | [Monkey Market](https://adventofcode.com/2024/day/22) | [Source](2024/day22/solution.py) | 1229.23 |
 | 23 | [LAN Party](https://adventofcode.com/2024/day/23) | [Source](2024/day23/solution.py) | 8.3 |
-| 24 | [Crossed Wires](https://adventofcode.com/2024/day/24) | [Source](2024/day24/solution.py) | - |
+| 24 | [Crossed Wires](https://adventofcode.com/2024/day/24) | [Source](2024/day24/solution.py) | 0.74 |
 | 25 | [Code Chronicle](https://adventofcode.com/2024/day/25) | [Source](2024/day25/solution.py) | - |
 
-Total time (avg): `2480 ms`
+Total time (avg): `1760 ms`
 
 
 ## 2020
 
 | Day | Problem | Solution | Benchmark (ms) |
 | --- | --- | --- | --: |
-| 1 | [Report Repair](https://adventofcode.com/2020/day/1) | [Source](2020/day01/solution.py) | 0.86 |
-| 2 | [Password Philosophy](https://adventofcode.com/2020/day/2) | [Source](2020/day02/solution.py) | 2.18 |
-| 3 | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [Source](2020/day03/solution.py) | 0.37 |
-| 4 | [Passport Processing](https://adventofcode.com/2020/day/4) | [Source](2020/day04/solution.py) | 0.8 |
-| 5 | [Binary Boarding](https://adventofcode.com/2020/day/5) | [Source](2020/day05/solution.py) | 0.9 |
-| 6 | [Custom Customs](https://adventofcode.com/2020/day/6) | [Source](2020/day06/solution.py) | 1.5 |
-| 7 | [Handy Haversacks](https://adventofcode.com/2020/day/7) | [Source](2020/day07/solution.py) | 2 |
-| 8 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Source](2020/day08/solution.py) | 3.2 |
-| 9 | [Encoding Error](https://adventofcode.com/2020/day/9) | [Source](2020/day09/solution.py) | 1.2 |
+| 01 | [Report Repair](https://adventofcode.com/2020/day/1) | [Source](2020/day01/solution.py) | 0.86 |
+| 02 | [Password Philosophy](https://adventofcode.com/2020/day/2) | [Source](2020/day02/solution.py) | 2.18 |
+| 03 | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | [Source](2020/day03/solution.py) | 0.37 |
+| 04 | [Passport Processing](https://adventofcode.com/2020/day/4) | [Source](2020/day04/solution.py) | 0.8 |
+| 05 | [Binary Boarding](https://adventofcode.com/2020/day/5) | [Source](2020/day05/solution.py) | 0.9 |
+| 06 | [Custom Customs](https://adventofcode.com/2020/day/6) | [Source](2020/day06/solution.py) | 1.5 |
+| 07 | [Handy Haversacks](https://adventofcode.com/2020/day/7) | [Source](2020/day07/solution.py) | 2 |
+| 08 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Source](2020/day08/solution.py) | 3.2 |
+| 09 | [Encoding Error](https://adventofcode.com/2020/day/9) | [Source](2020/day09/solution.py) | 1.2 |
 | 10 | [Adapter Array](https://adventofcode.com/2020/day/10) | [Source](2020/day10/solution.py) | 0.1 |
 | 11 | [Seating System](https://adventofcode.com/2020/day/11) | [Source](2020/day11/solution.py) | 360 |
 | 12 | [Rain Risk](https://adventofcode.com/2020/day/12) | [Source](2020/day12/solution.py) | 0.47 |
