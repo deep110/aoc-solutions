@@ -22,7 +22,7 @@ library such as numpy.
 | 09 | [Disk Fragmenter](https://adventofcode.com/2024/day/9) | [Source](2024/day09/solution.py) | 37 |
 | 10 | [Hoof It](https://adventofcode.com/2024/day/10) | [Source](2024/day10/solution.py) | 3 |
 | 11 | [Plutonian Pebbles](https://adventofcode.com/2024/day/11) | [Source](2024/day11/solution.py) | 39.3 |
-| 12 | [Garden Groups](https://adventofcode.com/2024/day/12) | [Source](2024/day12/solution.py) | - |
+| 12 | [Garden Groups](https://adventofcode.com/2024/day/12) | [Source](2024/day12/solution.py) | 20.9 |
 | 13 | [Claw Contraption](https://adventofcode.com/2024/day/13) | [Source](2024/day13/solution.py) | 1.36 |
 | 14 | [Restroom Redoubt](https://adventofcode.com/2024/day/14) | [Source](2024/day14/solution.py) | 13.38 |
 | 15 | [Warehouse Woes](https://adventofcode.com/2024/day/15) | [Source](2024/day15/solution.py) | 5.79 |
@@ -37,7 +37,7 @@ library such as numpy.
 | 24 | [Crossed Wires](https://adventofcode.com/2024/day/24) | [Source](2024/day24/solution.py) | 0.74 |
 | 25 | [Code Chronicle](https://adventofcode.com/2024/day/25) | [Source](2024/day25/solution.py) | - |
 
-Total time (avg): `1760 ms`
+Total time (avg): `1790 ms`
 
 
 ## 2020

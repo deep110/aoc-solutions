@@ -37,9 +37,8 @@ Part1 was simple enough, move around the grid until you exit. Didn't do any opti
 
 For Part2, answer is to put obstacle on each point of original guard path and check if path is looped. Did some optimizations:
 - First optimization, don't start for checking path loop from start but just before the obstacle position. It is because after obstacle path is going to change, hence why check from start. It bought my brute force approach time from ~10s to 2.5s. But my challenge was to get a solution under 1s.
-- Second optimization, only save visited states at turns during loop check. This bought the runtime to around ~0.5s. Not very happy but good enough.
-
-There is one optimization that can be done, is instead of going 1 step at a time, teleport to turns. My challenge was done, and I did not had enough motivation to do this.
+- Second optimization, only save visited states at turns during loop check. This bought the runtime to around ~0.5s.
+- Third Optimization, instead of visiting every point in grid, teleport to stones, bought the runtime to approx 0.060s.
 
 ### [Day 7](day07/solution.py)
 
@@ -59,8 +58,8 @@ Part1 was okay, got it right in first try.
 
 Solving Part2 was not hard for me. Hard part was optimizing it to run in <1s. I had to create a custom class to code clean and understandable. There were two optimization I did:
 - First, kept empty length pre calculated instead of calculating every time
-- Second, kept track of fully filled blocks.
-Still my solution takes around 0.45s, I am not happy with this runtime, but don't have motivation to rethink it. People on reddit have given a [O[n] solution](https://www.reddit.com/r/adventofcode/comments/1hab624/2024_day_9_part_2_best_i_can_do_is_ond_log_n_is/) instead O[nlog(n)].
+- Second, kept track of fully filled blocks. This bought runtime to 0.45s, which is okay.
+- I got inspired by this [O[n] solution](https://www.reddit.com/r/adventofcode/comments/1hab624/2024_day_9_part_2_best_i_can_do_is_ond_log_n_is/) instead O[nlog(n)], this bought it to ~0.040s, i.e 10x speedup.
 
 
 ### [Day 10](day10/solution.py)
@@ -73,7 +72,11 @@ Part1, did an brute force and got an answer quickly.
 
 Part2, after seeing my code running for 20-30mins i realized brute force is not going to work. First I started with storing transformations, then the number of stones which did the trick.
 
-<!-- * [Day 12](12/d12.py): BFS (**R**), finding islands in 2d grid (**R**) and finding sides of a 2D polygon (**L**) -->
+### [Day 12](day12/solution.py)
+
+For Part1, I implemented a simple DFS, and counted the boundaries and number of points.
+
+For Part2, I counted the corners. Took some time to think on how to count concave corners.
 
 ### [Day 13](day13/solution.py)
 
@@ -144,7 +147,7 @@ For Part2, I had to use a memoization to get the result quickly. Later I combine
 
 ### [Day 22](day22/solution.py)
 
-Problem was easy, main challenge was to reduce the runtime under 1s. My time is almost 2.2s after all the optimizations I can think of or people did on reddit. I guess it is one of those problems where you have to live with it.
+Problem was easy, main challenge was to reduce the runtime under 1s. My time is almost 1.2s after all the optimizations I can think of or people did on reddit. I guess it is one of those problems where you have to live with it.
 
 
 ### [Day 23](day23/solution.py)
