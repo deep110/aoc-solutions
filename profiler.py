@@ -8,6 +8,8 @@ from contextlib import redirect_stdout
 import traceback
 from typing import Optional, Tuple
 
+import plotext as plt
+
 
 def print_usage():
     print("Usage:", argv[0], "YEAR DAY")
@@ -87,6 +89,9 @@ if len(argv) == 2:
     year = to_int(1, "YEAR")
     total_time = 0
 
+    x_problems = []
+    y_runtimes = []
+
     print("| Day | Runtime | Status |")
     print("|----|--------|----|")
 
@@ -98,15 +103,23 @@ if len(argv) == 2:
 
         runtime, success, error = result
         status = "✅" if success else "❌"
+        total_time += runtime
 
-        if success:
-            total_time += runtime
+        x_problems.append(f"{day:02d}")
+        y_runtimes.append(runtime)
 
         print(f"| {day:02d} | {runtime:.2f}ms | {status} |")
 
     print("|----|--------|----|")
 
     print(f"Time taken in {year}: ", total_time, "ms")
+
+    plt.bar(x_problems, y_runtimes, width = 3 / 5, label="Run Time (ms)", color=200)
+    plt.plot_size(height=plt.terminal_height() * 0.6)
+    plt.theme("clear")
+    plt.title("AOC 2024")
+    plt.xlabel("Day")
+    plt.show()
 
 elif len(argv) == 3:
     year = to_int(1, "YEAR")
