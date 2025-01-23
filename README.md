@@ -71,3 +71,36 @@ Total time (avg): `2004 ms`
 | 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Source](2020/day25/solution.py) | - |
 
 Total time (avg): `3082.39 ms`
+
+
+## 2019
+
+| Day | Problem | Solution | Benchmark (ms) |
+| --- | --- | --- | --: |
+| 01 | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [Source](2019/day01/solution.py) | 0.16 |
+| 02 | [1202 Program Alarm](https://adventofcode.com/2019/day/2) | [Source](2019/day02/solution.py) | 9 |
+| 03 | [Crossed Wires](https://adventofcode.com/2019/day/3) | [Source](2019/day03/solution.py) | 33 |
+| 04 | [Secure Container](https://adventofcode.com/2019/day/4) | [Source](2019/day04/solution.py) | 2 |
+| 05 | [Sunny with a Chance of Asteroids](https://adventofcode.com/2019/day/5) | [Source](2019/day05/solution.py) | - |
+| 06 | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | [Source](2019/day06/solution.py) | - |
+| 07 | [Amplification Circuit](https://adventofcode.com/2019/day/7) | [Source](2019/day07/solution.py) | - |
+| 08 | [Space Image Format](https://adventofcode.com/2019/day/8) | [Source](2019/day08/solution.py) | - |
+| 09 | [Sensor Boost](https://adventofcode.com/2019/day/9) | [Source](2019/day09/solution.py) | - |
+| 10 | [Monitoring Station](https://adventofcode.com/2019/day/10) | [Source](2019/day10/solution.py) | - |
+| 11 | [Space Police](https://adventofcode.com/2019/day/11) | [Source](2019/day11/solution.py) | - |
+| 12 | [The N-Body Problem](https://adventofcode.com/2019/day/12) | [Source](2019/day12/solution.py) | - |
+| 13 | [Care Package](https://adventofcode.com/2019/day/13) | [Source](2019/day13/solution.py) | - |
+| 14 | [Space Stoichiometry](https://adventofcode.com/2019/day/14) | [Source](2019/day14/solution.py) | - |
+| 15 | [Oxygen System](https://adventofcode.com/2019/day/15) | [Source](2019/day15/solution.py) | - |
+| 16 | [Flawed Frequency Transmission](https://adventofcode.com/2019/day/16) | [Source](2019/day16/solution.py) | - |
+| 17 | [Set and Forget](https://adventofcode.com/2019/day/17) | [Source](2019/day17/solution.py) | - |
+| 18 | [Many-Worlds Interpretation](https://adventofcode.com/2019/day/18) | [Source](2019/day18/solution.py) | - |
+| 19 | [Tractor Beam](https://adventofcode.com/2019/day/19) | [Source](2019/day19/solution.py) | - |
+| 20 | [Donut Maze](https://adventofcode.com/2019/day/20) | [Source](2019/day20/solution.py) | - |
+| 21 | [Springdroid Adventure](https://adventofcode.com/2019/day/21) | [Source](2019/day21/solution.py) | - |
+| 22 | [Slam Shuffle](https://adventofcode.com/2019/day/22) | [Source](2019/day22/solution.py) | - |
+| 23 | [Category Six](https://adventofcode.com/2019/day/23) | [Source](2019/day23/solution.py) | - |
+| 24 | [Planet of Discord](https://adventofcode.com/2019/day/24) | [Source](2019/day24/solution.py) | - |
+| 25 | [Cryostasis](https://adventofcode.com/2019/day/25) | [Source](2019/day25/solution.py) | - |
+
+Total time (avg): `- ms`

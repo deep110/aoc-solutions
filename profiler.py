@@ -65,7 +65,7 @@ def load_solution_module(
                 spec.loader.exec_module(module)
             success = True
             error_msg = ""
-        except Exception as e:
+        except Exception:
             success = False
             # Get the full traceback information
             exc_type, exc_value, exc_tb = sys.exc_info()
@@ -78,7 +78,7 @@ def load_solution_module(
 
         return runtime_ms, success, error_msg
 
-    except Exception as e:
+    except Exception:
         # Get the full traceback information
         exc_type, exc_value, exc_tb = sys.exc_info()
         tb_str = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
@@ -114,7 +114,7 @@ if len(argv) == 2:
 
     print(f"Time taken in {year}: ", total_time, "ms")
 
-    plt.bar(x_problems, y_runtimes, width = 3 / 5, label="Run Time (ms)", color=200)
+    plt.bar(x_problems, y_runtimes, width=0.5, label="Run Time (ms)", color=200)
     plt.plot_size(height=plt.terminal_height() * 0.6)
     plt.theme("clear")
     plt.title("AOC 2024")
