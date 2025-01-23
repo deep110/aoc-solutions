@@ -1,16 +1,7 @@
 from os import path
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    cs = f.read().strip().split(",")
-
-cs = list(map(lambda x: int(x), cs))
-
-def handle_param_out(x: int):
-    if x < 9:
-        return (x, 0, 0, 0)
-    z = str(x).zfill(5)
-    
-    return (int(z[3:]), int(z[2]), int(z[1]), int(z[0]))
+    instructions = list(map(lambda x: int(x), f.read().split(",")))
 
 
 def get_value(j, codes, is_pos):
@@ -19,59 +10,71 @@ def get_value(j, codes, is_pos):
     else:
         return codes[codes[j]]
 
+
 def set_value(j, value, codes, is_pos):
     if is_pos == 1:
         codes[j] = value
     else:
         codes[codes[j]] = value
 
+
 def run_program(_input):
-    arr_len = len(cs)
-    i = 0
+    i = 0  # instruction_pointer
     outputs = []
+    cs = instructions.copy()
 
-    while i < arr_len:
-        po = handle_param_out(cs[i])
+    while True:
+        x = cs[i]
+        op_code, mode1, mode2, mode3 = (
+            x % 100,
+            (x // 100) % 10,
+            (x // 1000) % 10,
+            x // 10000,
+        )
 
-        if po[0] == 99:
+        if op_code == 99:
             break
-        if po[0] == 1:
-            val = get_value(i+1, cs, po[1]) + get_value(i+2, cs, po[2])
-            set_value(i+3, val, cs, po[3])
+        elif op_code == 1:
+            val = get_value(i + 1, cs, mode1) + get_value(i + 2, cs, mode2)
+            set_value(i + 3, val, cs, mode3)
             i += 4
-        if po[0] == 2:
-            val = get_value(i+1, cs, po[1]) * get_value(i+2, cs, po[2])
-            set_value(i+3, val, cs, po[3])
+        elif op_code == 2:
+            val = get_value(i + 1, cs, mode1) * get_value(i + 2, cs, mode2)
+            set_value(i + 3, val, cs, mode3)
             i += 4
-        if po[0] == 3:
-            cs[cs[i+1]] = _input
+        elif op_code == 3:
+            set_value(i + 1, _input, cs, mode1)
             i += 2
-        if po[0] == 4:
-            outputs.append(cs[cs[i+1]])
+        elif op_code == 4:
+            outputs.append(get_value(i + 1, cs, mode1))
             i += 2
-        if po[0] == 5:
-            fp = get_value(i+1, cs, po[1])
-            if fp != 0:
-                i = get_value(i+2, cs, po[2])
+        elif op_code == 5:
+            if get_value(i + 1, cs, mode1) != 0:
+                i = get_value(i + 2, cs, mode2)
             else:
                 i += 3
-        if po[0] == 6:
-            fp = get_value(i+1, cs, po[1])
-            if fp == 0:
-                i = get_value(i+2, cs, po[2])
+        elif op_code == 6:
+            if get_value(i + 1, cs, mode1) == 0:
+                i = get_value(i + 2, cs, mode2)
             else:
                 i += 3
-        if po[0] == 7:
-            val = get_value(i+1, cs, po[1]) < get_value(i+2, cs, po[2])
-            set_value(i+3, int(val), cs, po[3])
+        elif op_code == 7:
+            val = get_value(i + 1, cs, mode1) < get_value(i + 2, cs, mode2)
+            set_value(i + 3, int(val), cs, mode3)
             i += 4
-        if po[0] == 8:
-            val = get_value(i+1, cs, po[1]) == get_value(i+2, cs, po[2])
-            set_value(i+3, int(val), cs, po[3])
+        elif op_code == 8:
+            val = get_value(i + 1, cs, mode1) == get_value(i + 2, cs, mode2)
+            set_value(i + 3, int(val), cs, mode3)
             i += 4
 
-    return outputs
+    return outputs[-1]
 
 
-print("Part1 solution: ", run_program(1))
-print("Part2 solution: ", run_program(5))
+ans_part_1 = run_program(1)
+ans_part_2 = run_program(5)
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 16574641
+assert ans_part_2 == 15163975

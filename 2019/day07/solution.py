@@ -1,97 +1,134 @@
+from itertools import permutations
 from os import path
+from typing import List
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ins = f.read().strip().split(",")
+    instructions = list(map(lambda x: int(x), f.read().split(",")))
 
-ins = list(map(lambda x: int(x), ins))
 
-def run_program(cs, inputs):
-    def handle_param_out(x: int):
-        if x < 9:
-            return (x, 0, 0, 0)
-        z = str(x).zfill(5)
-        
-        return (int(z[3:]), int(z[2]), int(z[1]), int(z[0]))
+class IntCodeComputer:
+    def __init__(self, instructions, input: int):
+        self.codes = instructions
+        self.is_halted = False
+        self.ip = 0  # instruction_pointer
+        self.outputs = []
+        self.inputs = [input]
+        self.input_counter = 0
 
-    def get_value(j, codes, is_pos):
-        if is_pos == 1:
-            return codes[j]
+    def get_value(self, j, mode):
+        if mode == 1:
+            return self.codes[j]
         else:
-            return codes[codes[j]]
+            return self.codes[self.codes[j]]
 
-    def set_value(j, value, codes, is_pos):
-        if is_pos == 1:
-            codes[j] = value
+    def set_value(self, j, value, mode):
+        if mode == 1:
+            self.codes[j] = value
         else:
-            codes[codes[j]] = value
+            self.codes[self.codes[j]] = value
 
-    arr_len = len(cs)
-    i = 0
-    input_counter = 0
-    outputs = []
+    def run_program(self, more_input):
+        if self.is_halted:
+            return self.outputs[-1]
 
-    while i < arr_len:
-        po = handle_param_out(cs[i])
+        self.inputs.append(more_input)
 
-        if po[0] == 99:
-            break
-        if po[0] == 1:
-            val = get_value(i+1, cs, po[1]) + get_value(i+2, cs, po[2])
-            set_value(i+3, val, cs, po[3])
-            i += 4
-        if po[0] == 2:
-            val = get_value(i+1, cs, po[1]) * get_value(i+2, cs, po[2])
-            set_value(i+3, val, cs, po[3])
-            i += 4
-        if po[0] == 3:
-            cs[cs[i+1]] = inputs[input_counter]
-            i += 2
-            input_counter += 1
-        if po[0] == 4:
-            outputs.append(cs[cs[i+1]])
-            i += 2
-        if po[0] == 5:
-            fp = get_value(i+1, cs, po[1])
-            if fp != 0:
-                i = get_value(i+2, cs, po[2])
-            else:
-                i += 3
-        if po[0] == 6:
-            fp = get_value(i+1, cs, po[1])
-            if fp == 0:
-                i = get_value(i+2, cs, po[2])
-            else:
-                i += 3
-        if po[0] == 7:
-            val = get_value(i+1, cs, po[1]) < get_value(i+2, cs, po[2])
-            set_value(i+3, int(val), cs, po[3])
-            i += 4
-        if po[0] == 8:
-            val = get_value(i+1, cs, po[1]) == get_value(i+2, cs, po[2])
-            set_value(i+3, int(val), cs, po[3])
-            i += 4
+        while True:
+            x = self.codes[self.ip]
+            op_code, mode1, mode2, mode3 = (
+                x % 100,
+                (x // 100) % 10,
+                (x // 1000) % 10,
+                x // 10000,
+            )
 
-    return outputs[-1]
+            if op_code == 99:
+                self.is_halted = True
+                break
+            elif op_code == 1:
+                val = self.get_value(self.ip + 1, mode1) + self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, val, mode3)
+                self.ip += 4
+            elif op_code == 2:
+                val = self.get_value(self.ip + 1, mode1) * self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, val, mode3)
+                self.ip += 4
+            elif op_code == 3:
+                self.set_value(self.ip + 1, self.inputs[self.input_counter], mode1)
+                self.input_counter += 1
+                self.ip += 2
+            elif op_code == 4:
+                self.outputs.append(self.get_value(self.ip + 1, mode1))
+                self.ip += 2
+                break
+            elif op_code == 5:
+                if self.get_value(self.ip + 1, mode1) != 0:
+                    self.ip = self.get_value(self.ip + 2, mode2)
+                else:
+                    self.ip += 3
+            elif op_code == 6:
+                if self.get_value(self.ip + 1, mode1) == 0:
+                    self.ip = self.get_value(self.ip + 2, mode2)
+                else:
+                    self.ip += 3
+            elif op_code == 7:
+                val = self.get_value(self.ip + 1, mode1) < self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, int(val), mode3)
+                self.ip += 4
+            elif op_code == 8:
+                val = self.get_value(self.ip + 1, mode1) == self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, int(val), mode3)
+                self.ip += 4
+
+        return self.outputs[-1]
 
 
-def run_amp_setup(phases):
-    amp_out = 0
-    for i in phases:
-        amp_out = run_program(ins[:], [i, amp_out])
+def part1():
+    thrusts = []
+    for phases in permutations([0, 1, 2, 3, 4]):
+        amp_out = 0
+        for i in phases:
+            computer = IntCodeComputer(instructions[:], i)
+            amp_out = computer.run_program(amp_out)
 
-    return amp_out
+        thrusts.append(amp_out)
 
-outs = []
-def permute(a, l, r): 
-    if l==r:
-        outs.append(run_amp_setup(a))
-    else:
-        for i in range(l,r+1):
-            a[l], a[i] = a[i], a[l] # swap
-            permute(a, l+1, r)
-            a[l], a[i] = a[i], a[l] # backtrack
+    return max(thrusts)
 
-permute([0,1,2,3,4], 0, 4)
 
-max_thrust = max(outs)
-print(max_thrust)
+def part2():
+    thrusts = []
+    for phases in permutations([9, 8, 7, 6, 5]):
+        computers: List[IntCodeComputer] = []
+        for i in range(5):
+            computers.append(IntCodeComputer(instructions[:], phases[i]))
+
+        idx = 0
+        amp_out = 0
+        while True:
+            amp_out = computers[idx].run_program(amp_out)
+            if idx == 4 and computers[idx].is_halted:
+                break
+
+            idx = (idx + 1) % 5
+        thrusts.append(amp_out)
+
+    return max(thrusts)
+
+
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 255840
+assert ans_part_2 == 84088865

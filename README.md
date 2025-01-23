@@ -81,13 +81,13 @@ Total time (avg): `3082.39 ms`
 | 02 | [1202 Program Alarm](https://adventofcode.com/2019/day/2) | [Source](2019/day02/solution.py) | 9 |
 | 03 | [Crossed Wires](https://adventofcode.com/2019/day/3) | [Source](2019/day03/solution.py) | 33 |
 | 04 | [Secure Container](https://adventofcode.com/2019/day/4) | [Source](2019/day04/solution.py) | 2 |
-| 05 | [Sunny with a Chance of Asteroids](https://adventofcode.com/2019/day/5) | [Source](2019/day05/solution.py) | - |
-| 06 | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | [Source](2019/day06/solution.py) | - |
-| 07 | [Amplification Circuit](https://adventofcode.com/2019/day/7) | [Source](2019/day07/solution.py) | - |
-| 08 | [Space Image Format](https://adventofcode.com/2019/day/8) | [Source](2019/day08/solution.py) | - |
-| 09 | [Sensor Boost](https://adventofcode.com/2019/day/9) | [Source](2019/day09/solution.py) | - |
+| 05 | [Sunny with a Chance of Asteroids](https://adventofcode.com/2019/day/5) | [Source](2019/day05/solution.py) | 0.22 |
+| 06 | [Universal Orbit Map](https://adventofcode.com/2019/day/6) | [Source](2019/day06/solution.py) | 1.62 |
+| 07 | [Amplification Circuit](https://adventofcode.com/2019/day/7) | [Source](2019/day07/solution.py) | 10 |
+| 08 | [Space Image Format](https://adventofcode.com/2019/day/8) | [Source](2019/day08/solution.py) | 1 |
+| 09 | [Sensor Boost](https://adventofcode.com/2019/day/9) | [Source](2019/day09/solution.py) | 344 |
 | 10 | [Monitoring Station](https://adventofcode.com/2019/day/10) | [Source](2019/day10/solution.py) | - |
-| 11 | [Space Police](https://adventofcode.com/2019/day/11) | [Source](2019/day11/solution.py) | - |
+| 11 | [Space Police](https://adventofcode.com/2019/day/11) | [Source](2019/day11/solution.py) | 75.71 |
 | 12 | [The N-Body Problem](https://adventofcode.com/2019/day/12) | [Source](2019/day12/solution.py) | - |
 | 13 | [Care Package](https://adventofcode.com/2019/day/13) | [Source](2019/day13/solution.py) | - |
 | 14 | [Space Stoichiometry](https://adventofcode.com/2019/day/14) | [Source](2019/day14/solution.py) | - |
@@ -103,4 +103,4 @@ Total time (avg): `3082.39 ms`
 | 24 | [Planet of Discord](https://adventofcode.com/2019/day/24) | [Source](2019/day24/solution.py) | - |
 | 25 | [Cryostasis](https://adventofcode.com/2019/day/25) | [Source](2019/day25/solution.py) | - |
 
-Total time (avg): `- ms`
+Total time (avg): `390 ms`
