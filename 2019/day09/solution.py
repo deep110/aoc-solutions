@@ -1,81 +1,121 @@
 from os import path
+from typing import List
 
 with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    cs = f.read().strip().split(",")
+    cs = list(map(lambda x: int(x), f.read().split(",")))
 
-cs = list(map(lambda x: int(x), cs))
 
-def run_program(cs, _input, relative_base):
-    def handle_param_out(x: int):
-        z = str(x).zfill(5)
-        
-        return (int(z[3:]), int(z[2]), int(z[1]), int(z[0]))
+class IntCodeComputer:
+    def __init__(
+        self, instructions: List[int], input: int = None, relative_base: int = 0
+    ):
+        self.codes = instructions
+        self.is_halted = False
+        self.ip = 0  # instruction_pointer
+        self.outputs = []
+        self.inputs = [input] if input else []
+        self.input_counter = 0
+        self.rb = relative_base
 
-    def get_value(j, codes, mode, _rb):
+        # extend memory
+        self.codes.extend([0] * 200)
+
+    def get_value(self, j, mode):
         if mode == 1:
-            return codes[j]
+            return self.codes[j]
         elif mode == 0:
-            return codes[codes[j]]
+            return self.codes[self.codes[j]]
         else:
-            return codes[codes[j] + _rb]
+            return self.codes[self.codes[j] + self.rb]
 
-    def set_value(j, value, codes, mode, _rb):
+    def set_value(self, j, value, mode):
         if mode == 1:
-            codes[j] = value
+            self.codes[j] = value
         elif mode == 0:
-            codes[codes[j]] = value
+            self.codes[self.codes[j]] = value
         else:
-            codes[codes[j] + _rb] = value
+            self.codes[self.codes[j] + self.rb] = value
 
-    cs.extend([0] * 500)
-    i = 0
-    outputs = []
-    rb = relative_base
+    def run_program(self, more_input: int = None):
+        if self.is_halted:
+            return self.outputs[-1]
 
-    while True:
-        po = handle_param_out(cs[i])
+        if more_input:
+            self.inputs.append(more_input)
 
-        if po[0] == 99:
-            break
-        if po[0] == 1:
-            val = get_value(i+1, cs, po[1], rb) + get_value(i+2, cs, po[2], rb)
-            set_value(i+3, val, cs, po[3], rb)
-            i += 4
-        if po[0] == 2:
-            val = get_value(i+1, cs, po[1], rb) * get_value(i+2, cs, po[2], rb)
-            set_value(i+3, val, cs, po[3], rb)
-            i += 4
-        if po[0] == 3:
-            set_value(i+1, _input, cs, po[1], rb)
-            i += 2
-        if po[0] == 4:
-            outputs.append(get_value(i+1, cs, po[1], rb))
-            i += 2
-        if po[0] == 5:
-            fp = get_value(i+1, cs, po[1], rb)
-            if fp != 0:
-                i = get_value(i+2, cs, po[2], rb)
-            else:
-                i += 3
-        if po[0] == 6:
-            fp = get_value(i+1, cs, po[1], rb)
-            if fp == 0:
-                i = get_value(i+2, cs, po[2], rb)
-            else:
-                i += 3
-        if po[0] == 7:
-            val = get_value(i+1, cs, po[1], rb) < get_value(i+2, cs, po[2], rb)
-            set_value(i+3, int(val), cs, po[3], rb)
-            i += 4
-        if po[0] == 8:
-            val = get_value(i+1, cs, po[1], rb) == get_value(i+2, cs, po[2], rb)
-            set_value(i+3, int(val), cs, po[3], rb)
-            i += 4
-        if po[0] == 9:
-            rb = rb + get_value(i+1, cs, po[1], rb)
-            i += 2
+        while True:
+            x = self.codes[self.ip]
+            op_code, mode1, mode2, mode3 = (
+                x % 100,
+                (x // 100) % 10,
+                (x // 1000) % 10,
+                x // 10000,
+            )
 
-    return outputs[-1]
+            if op_code == 99:
+                self.is_halted = True
+                break
+            elif op_code == 1:
+                val = self.get_value(self.ip + 1, mode1) + self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, val, mode3)
+                self.ip += 4
+            elif op_code == 2:
+                val = self.get_value(self.ip + 1, mode1) * self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, val, mode3)
+                self.ip += 4
+            elif op_code == 3:
+                self.set_value(self.ip + 1, self.inputs[self.input_counter], mode1)
+                self.input_counter += 1
+                self.ip += 2
+            elif op_code == 4:
+                self.outputs.append(self.get_value(self.ip + 1, mode1))
+                self.ip += 2
+                break
+            elif op_code == 5:
+                if self.get_value(self.ip + 1, mode1) != 0:
+                    self.ip = self.get_value(self.ip + 2, mode2)
+                else:
+                    self.ip += 3
+            elif op_code == 6:
+                if self.get_value(self.ip + 1, mode1) == 0:
+                    self.ip = self.get_value(self.ip + 2, mode2)
+                else:
+                    self.ip += 3
+            elif op_code == 7:
+                val = self.get_value(self.ip + 1, mode1) < self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, int(val), mode3)
+                self.ip += 4
+            elif op_code == 8:
+                val = self.get_value(self.ip + 1, mode1) == self.get_value(
+                    self.ip + 2, mode2
+                )
+                self.set_value(self.ip + 3, int(val), mode3)
+                self.ip += 4
+            elif op_code == 9:
+                self.rb = self.rb + self.get_value(self.ip + 1, mode1)
+                self.ip += 2
 
-print("part1", run_program(cs[:], 1, 0))
-print("part2", run_program(cs[:], 2, 0))
+        return self.outputs[-1]
+
+
+def run(input):
+    comp = IntCodeComputer(cs[:], input, 0)
+    while not comp.is_halted:
+        comp.run_program()
+    return comp.outputs[-1]
+
+
+ans_part_1 = run(1)
+ans_part_2 = run(2)
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 2204990589
+assert ans_part_2 == 50008
