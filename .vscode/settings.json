@@ -6,4 +6,7 @@
     "search.exclude": {
         "**/.git": true,
     },
+    "cSpell.words": [
+        "intcode"
+    ],
 }
