@@ -92,7 +92,7 @@ class IntCodeComputer:
                 self.set_value(self.ip + 3, int(val), mode3)
                 self.ip += 4
             elif op_code == 9:
-                self.rb = self.rb + self.get_value(self.ip + 1, mode1)
+                self.rb += self.get_value(self.ip + 1, mode1)
                 self.ip += 2
 
         return self.outputs[-1]

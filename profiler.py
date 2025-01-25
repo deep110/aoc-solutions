@@ -117,7 +117,7 @@ if len(argv) == 2:
     plt.bar(x_problems, y_runtimes, width=0.5, label="Run Time (ms)", color=200)
     plt.plot_size(height=plt.terminal_height() * 0.6)
     plt.theme("clear")
-    plt.title("AOC 2024")
+    plt.title(f"AOC {year}")
     plt.xlabel("Day")
     plt.show()
 
