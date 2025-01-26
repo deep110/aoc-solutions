@@ -29,7 +29,7 @@ def part2():
     for phases in permutations([9, 8, 7, 6, 5]):
         computers: List[IntCodeComputer] = []
         for i in range(5):
-            computers.append(IntCodeComputer(instructions[:], phases[i]))
+            computers.append(IntCodeComputer(instructions[:], phases[i], extra_memory=100))
 
         idx = 0
         amp_out = 0

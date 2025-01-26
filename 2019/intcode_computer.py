@@ -2,7 +2,7 @@ from typing import List, Optional
 
 
 class IntCodeComputer:
-    def __init__(self, instructions: List[int], input: Optional[int] = None):
+    def __init__(self, instructions: List[int], input: Optional[int] = None, extra_memory = 200):
         self.codes = instructions
         self.is_halted = False
         self.ip = 0  # instruction_pointer
@@ -12,7 +12,7 @@ class IntCodeComputer:
         self.rb = 0
 
         # extend memory
-        self.codes.extend([0] * 200)
+        self.codes.extend([0] * extra_memory)
 
     def get_value(self, j, mode):
         if mode == 1:
@@ -32,7 +32,7 @@ class IntCodeComputer:
 
     def run_program(self, more_input: Optional[int] = None):
         if self.is_halted:
-            return self.outputs[-1]
+            return None
 
         if more_input is not None:
             self.inputs.append(more_input)

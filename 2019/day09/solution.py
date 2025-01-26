@@ -10,7 +10,7 @@ with open(path.join(path.dirname(__file__), "input.txt")) as f:
 
 
 def run(input):
-    comp = IntCodeComputer(cs[:], input)
+    comp = IntCodeComputer(cs[:], input, extra_memory=150)
     while not comp.is_halted:
         comp.run_program()
     return comp.outputs[-1]

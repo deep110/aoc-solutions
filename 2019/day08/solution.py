@@ -29,7 +29,7 @@ ALPHABET_6 = {
 }
 
 
-def _convert_6(array: list[list[str]]) -> str:
+def convert_6(array: list[list[str]]) -> str:
     # Validate input
     rows, cols = len(array), len(array[0])
     if any(len(row) != cols for row in array):
@@ -78,7 +78,7 @@ def part2():
             row.append(final_bit)
         final_img.append(row)
 
-    return _convert_6(final_img)
+    return convert_6(final_img)
 
 
 ans_part_1 = part1()
