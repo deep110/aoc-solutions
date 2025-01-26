@@ -1,3 +1,11 @@
+"""
+# Seating System
+
+Cellular automata are hard to speed up due to the need to check all neighbors each iteration.
+For both parts we minimize expensive memory allocation by creating only two temporary buffers
+then swapping between them each turn, a similar approach to double buffering.
+"""
+
 from collections import defaultdict
 from aoc.utils import read_input
 
@@ -58,10 +66,8 @@ def run_simulation(seats, neighbors, num_occupancy=4):
         if not state_changed:
             return
 
-        # copy state into seats
-        for i in range(num_rows):
-            for j in range(num_columns):
-                seats[i][j] = state[i][j]
+        # swap seats and state grid buffer
+        seats, state = state, seats
 
 
 def part1():
@@ -99,7 +105,7 @@ def part1():
 
 
 def part2():
-    seats = list(map(lambda x: list(x.strip()), ms))
+    seats = list(map(lambda x: list(x), ms))
     NUM_ROWS = len(seats)
     NUM_COLUMNS = len(seats[0])
 

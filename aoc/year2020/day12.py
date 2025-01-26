@@ -1,3 +1,12 @@
+"""
+# Rain Risk
+
+Part2, required vector rotation, since angles are multiples of 90°, we can avoid
+trigonometric functions, using complex algebra.
+- For clockwise, i.e right, Its like multiplying by -i in complex algebra
+- For anti-clockwise, i.e left, Its like multiplying by i in complex algebra
+"""
+
 from aoc.utils import read_input
 
 instructions = read_input(2020, 12).split("\n")
@@ -36,18 +45,6 @@ def part1():
 
 
 def part2():
-    """
-    For clockwise, i.e right, Its like multiplying by -i in complex algebra
-
-    For anti-clockwise, i.e left, Its like multiplying by i in complex algebra
-    """
-
-    def rotate_right_90(x, y):
-        return (y, -x)
-
-    def rotate_left_90(x, y):
-        return (-y, x)
-
     ci, cj = (0, 0)  # current position
     wi, wj = (10, 1)  # waypoint
 
@@ -69,10 +66,10 @@ def part2():
                 wi -= value
             case "L":
                 for _ in range(0, value // 90):
-                    wi, wj = rotate_left_90(wi, wj)
+                    wi, wj = -wj, wi
             case "R":
                 for _ in range(0, value // 90):
-                    wi, wj = rotate_right_90(wi, wj)
+                    wi, wj = wj, -wi
 
     return abs(ci) + abs(cj)
 

@@ -1,3 +1,7 @@
+"""
+# Adapter Array
+"""
+
 from aoc.utils import read_input
 
 ms = read_input(2020, 10).split("\n")

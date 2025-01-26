@@ -1,3 +1,23 @@
+"""
+# Conway Cubes
+
+While a solution for both parts using a state and grid and just lists was easy enough to add,
+it took 1.7s to complete both parts.
+
+Then I saw few [solutions on reddit](https://www.reddit.com/r/adventofcode/comments/keqsfa/2020_day_17_solutions/),
+lot of people using python recommend using dict and key being tuple of indexes.
+
+In my own input, only about 4% of the 3D space ended up being active, and 2% of my 4D space ends
+up being active. This means that holding a dense vector of all possible active points
+(which will be (6+8+6)^n) is up to 98% wasteful. Hence dict is very memory efficient, if you only
+need to keep track of active coordinates.
+
+Also, we are doing reverse, instead of looping on each coordinate and finding active neighbors, we are
+looking into each active coordinate and adding 1 to each neighbor.
+This also helps to speed up a lot, because state change requires some minimum active neighbors
+to be present, so we only loop on coordinates which has at least 1 active neighbor.
+"""
+
 from collections import defaultdict
 from itertools import product
 from aoc.utils import read_input
@@ -14,51 +34,43 @@ def get_neighbors(dimension: int):
 
 
 def part1():
-    coord_dict = {}
+    active_cells = set()
     neighbors = get_neighbors(3)
     y = 0
     z = 0
 
     for line in ms:
         for x, c in enumerate(line):
-            coord_dict[(x, y, z)] = c == "#"
+            if c == "#":
+                active_cells.add((x, y, z))
         y += 1
 
     for _ in range(NUM_CYCLES):
         neighbor_count = defaultdict(int)
-        n_map = {}
+        new_active_cells = set()
 
         # Find each active coordinate, and for each of its neighbor add 1
-        # We are doing reverse, instead of looping on each coordinate and finding active neighbors, we are
-        # looking into each active coordinate and adding 1 to each neighbor.
-        for c in coord_dict:
-            if coord_dict[c]:
-                for ni, nj, nk in neighbors:
-                    neighbor_count[(c[0] + ni, c[1] + nj, c[2] + nk)] += 1
+        #
+        # We are doing reverse, instead of looping on each coordinate and finding
+        # active neighbors, we are looking into each active coordinate and adding
+        # 1 to each neighbor.
+        for cell in active_cells:
+            for ni, nj, nk in neighbors:
+                neighbor_count[(cell[0] + ni, cell[1] + nj, cell[2] + nk)] += 1
 
-        for this_coord in neighbor_count:
-            # If the coord is newly viewed, then its initial state must be inactive
-            try:
-                current_state = coord_dict[this_coord]
-            except KeyError:
-                current_state = False
-
-            # Active coordinates stay active only if they have 2 or 3 active neighbors
-            if current_state and not (2 <= neighbor_count[this_coord] <= 3):
-                n_map[this_coord] = False
+        for coord, count in neighbor_count.items():
             # Inactive coordinates become active if they have exactly 3 active neighbors
-            elif not current_state and neighbor_count[this_coord] == 3:
-                n_map[this_coord] = True
-            else:
-                n_map[this_coord] = current_state
+            # Active coordinates stay active only if they have 2 or 3 active neighbors
+            if count == 3 or (count == 2 and coord in active_cells):
+                new_active_cells.add(coord)
 
-        coord_dict = n_map
+        active_cells = new_active_cells
 
-    return sum(coord_dict.values())
+    return len(active_cells)
 
 
 def part2():
-    coord_dict = {}
+    active_cells = set()
     neighbors = get_neighbors(4)
     y = 0
     z = 0
@@ -66,34 +78,27 @@ def part2():
 
     for line in ms:
         for x, c in enumerate(line):
-            coord_dict[(x, y, z, w)] = c == "#"
+            if c == "#":
+                active_cells.add((x, y, z, w))
         y += 1
 
     for _ in range(NUM_CYCLES):
         neighbor_count = defaultdict(int)
-        n_map = {}
+        new_active_cells = set()
 
-        for c in coord_dict:
-            if coord_dict[c]:
-                for ni, nj, nk, nl in neighbors:
-                    neighbor_count[(c[0] + ni, c[1] + nj, c[2] + nk, c[3] + nl)] += 1
+        for cell in active_cells:
+            for ni, nj, nk, nl in neighbors:
+                neighbor_count[
+                    (cell[0] + ni, cell[1] + nj, cell[2] + nk, cell[3] + nl)
+                ] += 1
 
-        for this_coord in neighbor_count:
-            try:
-                current_state = coord_dict[this_coord]
-            except KeyError:
-                current_state = False
+        for coord, count in neighbor_count.items():
+            if count == 3 or (count == 2 and coord in active_cells):
+                new_active_cells.add(coord)
 
-            if current_state and not (2 <= neighbor_count[this_coord] <= 3):
-                n_map[this_coord] = False
-            elif not current_state and neighbor_count[this_coord] == 3:
-                n_map[this_coord] = True
-            else:
-                n_map[this_coord] = current_state
+        active_cells = new_active_cells
 
-        coord_dict = n_map
-
-    return sum(coord_dict.values())
+    return len(active_cells)
 
 
 ans_part_1 = part1()

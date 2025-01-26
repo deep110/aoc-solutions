@@ -1,3 +1,7 @@
+"""
+# Binary Boarding
+"""
+
 from aoc.utils import read_input
 
 ms = read_input(2020, 5).split("\n")

@@ -1,3 +1,22 @@
+"""
+# Monitoring Station
+
+## Part One
+We compare each pair of points, first subtracting the current asteroid to get a relative vector.
+Since all coordinates are integers we can check for multiple points on the same line by
+reducing the vector by its [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor).
+For example, looking from the origin `(0, 0)`, the points `(3, 5)`, `(6, 10)` and `(21, 35)`
+are all on the same line, with gcds of 1, 2 and 7 respectively.
+
+For each point we build a set of previously seen values. Since we can see at most one asteroid
+in a given direction, if a vector is already in the set then we ignore it. The final size of
+the set is the number of visible asteroids.
+
+## Part Two
+
+Using atan2 to get the angle, sort them, and pop asteroids one by one in the increasing order of angle.
+"""
+
 from collections import defaultdict
 import math
 
@@ -36,6 +55,10 @@ def part1():
 
 
 def to_angle(x, y):
+    """
+    converts to angle between 0 to 360 deg, with positive y-axis as 0 and angle
+    increases clockwise
+    """
     angle_rad = math.atan2(x, y)
     return (TWO_PI + angle_rad) % TWO_PI
 

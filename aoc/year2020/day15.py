@@ -17,11 +17,11 @@ def part12(number_idx):
         if last_number < ARR_THRESHOLD:
             val = turn_arr_cache[last_number]
             turn_arr_cache[last_number] = turn_num
+            last_number = turn_num - val if val else 0
         else:
-            val = turn_dict_cache.get(last_number)
+            val = turn_dict_cache.get(last_number, turn_num)
             turn_dict_cache[last_number] = turn_num
-
-        last_number = turn_num - val if val else 0
+            last_number = turn_num - val
 
     return last_number
 

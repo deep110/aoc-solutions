@@ -1,3 +1,7 @@
+"""
+# Space Image Format
+"""
+
 from collections import Counter
 from aoc.utils import read_input, image_arr_to_str
 

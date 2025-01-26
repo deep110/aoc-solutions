@@ -1,3 +1,7 @@
+"""
+# Handy Haversacks
+"""
+
 from collections import defaultdict
 import re
 from aoc.utils import read_input
@@ -12,7 +16,7 @@ reverse_tree = defaultdict(list)
 
 
 def get_bag(x):
-    m = BPAT.search(x.strip())
+    m = BPAT.search(x)
     if m:
         return (m[2], int(m[1]))
     else:
@@ -20,7 +24,7 @@ def get_bag(x):
 
 
 for i in ms:
-    m = PAT.search(i)
+    m = PAT.match(i)
     a = m[1]
     b = list(map(lambda x: get_bag(x), m[2].split(",")))
 

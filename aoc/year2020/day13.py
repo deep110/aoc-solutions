@@ -1,3 +1,15 @@
+"""
+# Shuttle Search
+
+Part two uses the [Chinese Remainder Theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem).
+The integers n₁, n₂, ... nₖ map to the bus ids which happen to be prime. This satisfies the requirement
+that the integers are pairwise co-prime.
+
+In implementation, hard part was figuring out the remainders.
+I used [this reference](https://www.geeksforgeeks.org/implementation-of-chinese-remainder-theorem-inverse-modulo-based-implementation/)
+to understand the theorem and how to implement it.
+"""
+
 from aoc.utils import read_input
 
 ms = read_input(2020, 13).split("\n")
@@ -22,9 +34,7 @@ def mod_inv(num, value):
 def part1():
     start_timestamp = int(ms[0])
     timestamp = start_timestamp
-    bus_ids = list(
-        map(lambda x: int(x), filter(lambda x: x != "x", ms[1].split(",")))
-    )
+    bus_ids = list(map(lambda x: int(x), filter(lambda x: x != "x", ms[1].split(","))))
 
     while True:
         for bus_id in bus_ids:
@@ -35,14 +45,11 @@ def part1():
 
 
 def part2():
-    """
-    We are going to use chinese remainder theorem.
-    """
     numbers = []
     remainders = []
     product = 1
 
-    for i, bid in enumerate(ms[1].strip().split(",")):
+    for i, bid in enumerate(ms[1].split(",")):
         if bid != "x":
             bid = int(bid)
             numbers.append(bid)

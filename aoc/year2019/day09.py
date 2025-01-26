@@ -1,3 +1,8 @@
+"""
+# Sensor Boost
+
+It takes around 120ms, I don't see anyway to speed it up.
+"""
 from aoc.utils import read_input
 from aoc.year2019.intcode_computer import IntCodeComputer
 

@@ -1,3 +1,11 @@
+"""
+# Report Repair
+
+For part1, Instead of comparing every value, i.e O(n²) we can do in O(n), if we use a set to find
+the diff
+Similarly, for part2, we can reduce it from O(n³) to O(n²).
+"""
+
 from aoc.utils import read_input
 
 ms = [int(i) for i in read_input(2020, 1).split("\n")]
@@ -7,16 +15,17 @@ REQUIRED_SUM = 2020
 
 def part1():
     for i in ms:
-        if (REQUIRED_SUM - i) in ms_set:
-            return i * (REQUIRED_SUM - i)
+        diff = REQUIRED_SUM - i
+        if diff in ms_set:
+            return i * diff
 
 
 def part2():
-    for i in ms:
-        for j in ms:
-            k = REQUIRED_SUM - i - j
+    for i in range(len(ms)):
+        for j in range(i + 1, len(ms)):
+            k = REQUIRED_SUM - ms[i] - ms[j]
             if k in ms_set:
-                return i * j * k
+                return ms[i] * ms[j] * k
 
 
 ans_part_1 = part1()

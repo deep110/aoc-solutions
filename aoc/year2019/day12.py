@@ -1,3 +1,7 @@
+"""
+# The N-Body Problem
+"""
+
 import re
 from aoc.utils import read_input
 
@@ -21,7 +25,7 @@ def part1():
         grps = COORD_PATTERN.match(m).groups()
         moons.append(Moon(int(grps[0]), int(grps[1]), int(grps[2])))
 
-    print(moons)
+        print(moons[-1])
 
 
 def part2():

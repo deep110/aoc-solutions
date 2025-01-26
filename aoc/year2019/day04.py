@@ -1,3 +1,10 @@
+"""
+# Secure Container
+
+We speed things up by only checking numbers that have digits in non-decreasing order for pairs.
+These numbers become rapidly less dense as the password value increases.
+"""
+
 from collections import Counter
 
 RANGE_MIN = 372304

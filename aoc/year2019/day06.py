@@ -1,3 +1,13 @@
+"""
+# Universal Orbit Map
+
+Part1 is straightforward.
+
+For Part2, we create path from "SAN" -> "COM", then
+when creating a path from "YOU" -> "COM", first node we find will be the common node
+for shortest path. We can use it to calculate distance between them.
+"""
+
 from typing import Dict
 from aoc.utils import read_input
 
@@ -58,10 +68,6 @@ def part1(tree: Dict[str, Node]):
 
 
 def part2(tree: Dict[str, Node]):
-    # we create path from "SAN" -> "COM", then
-    # when creating a path from "YOU" -> "COM", first node we find will be the common node
-    # for shortest path
-
     # create path between santa and COM
     path_santa = set()
     node_val = "SAN"

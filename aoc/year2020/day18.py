@@ -1,3 +1,12 @@
+"""
+# Operation Order
+
+Part1 was very straight forward, even to do without any string manipulations or using python eval.
+
+For Part2, i had to read up a bit on how algorithmic expressions are evaluated. Came across
+[Shunting Yard Algorithm](https://mathcenter.oxford.emory.edu/site/cs171/shuntingYardAlgorithm/).
+This converts infix notation to postfix or reverse Polish notation (RPN). Then we just solve the RPN stack.
+"""
 from aoc.utils import read_input
 
 SPACES = [" ", "\n"]

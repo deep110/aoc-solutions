@@ -1,7 +1,10 @@
+"""
+# Custom Customs
+"""
+
 from aoc.utils import read_input
 
-ms = read_input(2020, 6)
-ms = ms.split("\n\n")
+ms = read_input(2020, 6).rstrip().split("\n\n")
 
 
 def part1():
@@ -16,7 +19,7 @@ def part1():
 def part2():
     c = 0
     for i in ms:
-        j = list(map(lambda x: set(x), i.strip().split("\n")))
+        j = list(map(lambda x: set(x), i.split("\n")))
         k = set.intersection(*j)
         c += len(k)
 

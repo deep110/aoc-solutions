@@ -1,3 +1,10 @@
+"""
+# Handheld Halting
+
+A brute force implementation that changes every `Jmp` or `Nop` in the input one at at time then
+tests the result would have `O(n²)` complexity for part two.
+"""
+
 from aoc.utils import read_input
 
 

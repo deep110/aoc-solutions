@@ -1,3 +1,7 @@
+"""
+# Custom Customs
+"""
+
 from aoc.utils import read_input
 
 ms = read_input(2020, 9).split("\n")
@@ -7,12 +11,11 @@ PREAMBLE_LEN = 25
 
 
 def is_sum_exists(num, array_inputs):
+    inputs_set = set(array_inputs)
     for i in range(0, len(array_inputs)):
         diff = num - array_inputs[i]
-        if diff > 0:
-            for j in range(i + 1, len(array_inputs)):
-                if diff == array_inputs[j]:
-                    return True
+        if diff in inputs_set:
+            return True
     return False
 
 

@@ -1,3 +1,9 @@
+"""
+# Amplification Circuit
+
+There is no alternative other than brute forcing on the permutations.
+"""
+
 from itertools import permutations
 from typing import List
 

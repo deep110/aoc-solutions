@@ -1,3 +1,7 @@
+"""
+# Space Police
+"""
+
 from collections import defaultdict
 
 from aoc.utils import read_input, image_arr_to_str
