@@ -48,3 +48,4 @@ venv.bak/
 
 .DS_Store
 data.md
+input/

@@ -2,10 +2,9 @@ import os
 from datetime import datetime
 from sys import argv
 
-SOLUTION_TEMPLATE = """from os import path
+SOLUTION_TEMPLATE = """from aoc.utils import read_input
 
-with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
+ms = read_input(2019, 1)
 
 def part1():
     pass
