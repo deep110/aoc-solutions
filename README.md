@@ -77,7 +77,7 @@ Total time (avg): `2004 ms`
 | 19 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Source](aoc/year2020/day19.py) | 24 |
 | 20 | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20) | [Source](aoc/year2020/day20.py) | - |
 | 21 | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Source](aoc/year2020/day21.py) | - |
-| 22 | [Crab Combat](https://adventofcode.com/2020/day/22) | [Source](aoc/year2020/day22.py) | - |
+| 22 | [Crab Combat](https://adventofcode.com/2020/day/22) | [Source](aoc/year2020/day22.py) | 9 |
 | 23 | [Crab Cups](https://adventofcode.com/2020/day/23) | [Source](aoc/year2020/day23.py) | - |
 | 24 | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Source](aoc/year2020/day24.py) | - |
 | 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Source](aoc/year2020/day25.py) | - |
