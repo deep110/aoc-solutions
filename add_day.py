@@ -4,13 +4,16 @@ from sys import argv
 
 SOLUTION_TEMPLATE = """from aoc.utils import read_input
 
-ms = read_input(2019, 1)
+ms = read_input({}, {})
+
 
 def part1():
     pass
 
+    
 def part2():
     pass
+
 
 ans_part_1 = part1()
 ans_part_2 = part2()
@@ -49,12 +52,12 @@ else:
     print_usage()
 
 # create folder for particular day & year
-dir_name = "{}/day{:02}".format(year, day)
+dir_name = "aoc/year{}".format(year)
 os.makedirs(dir_name, exist_ok=True)
 
-if not os.path.exists(dir_name + "/solution.py"):
-    with open(f"{dir_name}/solution.py", "w") as f:
-        f.write(SOLUTION_TEMPLATE)
+if not os.path.exists(dir_name + "/day{:02}.py".format(day)):
+    with open(f"{dir_name}/day{day:02}.py", "w") as f:
+        f.write(SOLUTION_TEMPLATE.format(year, day))
 
-    with open(f"{dir_name}/input.txt", "w") as f:
+    with open(f"input/{year}/day{day:02}.txt", "w") as f:
         f.write("")
