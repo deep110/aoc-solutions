@@ -71,7 +71,8 @@ def part2():
 
     play(cups, input[0], num_cups, 10000000)
 
-    return cups[1] * cups[cups[1]]
+    c1 = cups[1]
+    return c1 * cups[c1]
 
 
 ans_part_1 = part1()
