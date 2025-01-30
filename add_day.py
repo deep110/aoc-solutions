@@ -59,5 +59,6 @@ if not os.path.exists(dir_name + "/day{:02}.py".format(day)):
     with open(f"{dir_name}/day{day:02}.py", "w") as f:
         f.write(SOLUTION_TEMPLATE.format(year, day))
 
+if not os.path.exists(f"input/{year}/day{day:02}.txt"):
     with open(f"input/{year}/day{day:02}.txt", "w") as f:
         f.write("")
