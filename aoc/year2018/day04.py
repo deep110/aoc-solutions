@@ -1,6 +1,11 @@
+"""
+# Repose Record
+"""
+
 from collections import defaultdict
 from datetime import datetime
 import re
+from typing import Dict
 from aoc.utils import read_input
 
 ms = read_input(2018, 4).split("\n")
@@ -38,7 +43,7 @@ def setup():
     return sleep_mappings
 
 
-def part1(_mappings):
+def part1(_mappings: Dict[str, list]):
     guard_id = None
     max_time = -1
     for gid in _mappings:

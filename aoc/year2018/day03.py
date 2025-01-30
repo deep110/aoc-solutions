@@ -1,3 +1,7 @@
+"""
+# No Matter How You Slice It
+"""
+
 from collections import defaultdict
 from aoc.utils import read_input
 
@@ -16,9 +20,6 @@ class Rect:
             self.w = int(_e[0])
             self.h = int(_e[1])
 
-    def __repr__(self):
-        return f"R<{self.x=}, {self.y=} {self.w=} {self.h=}>"
-
     def intersect(self, rect2: "Rect") -> bool:
         if (rect2.x > self.x + self.w) or (self.x > (rect2.x + rect2.w)):
             return False
@@ -28,31 +29,28 @@ class Rect:
 
         return True
 
-    def __eq__(self, other: "Rect"):
-        return self.id == other.id
 
-
-rects = list(map(lambda x: Rect(desc=x), ms))
+claims = list(map(lambda x: Rect(desc=x), ms))
 
 
 def part1():
     titles = defaultdict(int)
-    for r in rects:
+    for r in claims:
         for i in range(r.x, r.x + r.w):
             for j in range(r.y, r.y + r.h):
-                titles[(i, j)] += 1
+                titles[i * 1000 + j] += 1
 
     return sum(1 for t in titles.values() if t > 1)
 
 
 def part2():
-    for i in rects:
+    for i in claims:
         k = 0
-        for j in rects:
+        for j in claims:
             k += 1
             if (not (i == j)) and i.intersect(j):
                 break
-        if k == len(rects):
+        if k == len(claims):
             return i.id
 
 

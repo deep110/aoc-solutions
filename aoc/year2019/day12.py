@@ -38,5 +38,5 @@ ans_part_2 = part2()
 print("Part1 solution: ", ans_part_1)
 print("Part2 solution: ", ans_part_2)
 
-# assert ans_part_1 == 0
-# assert ans_part_2 == 0
+assert ans_part_1 == 0
+assert ans_part_2 == 0

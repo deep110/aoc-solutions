@@ -88,7 +88,7 @@ Total time (avg): `5210 ms`
 ## 2019
 
 | Day | Problem | Solution | Benchmark (ms) |
-| --- | --- | --- | --: |
+| --- | --- | --- | -- |
 | 01 | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [Source](aoc/year2019/day01.py) | 0.3 |
 | 02 | [1202 Program Alarm](https://adventofcode.com/2019/day/2) | [Source](aoc/year2019/day02.py) | 0.58 |
 | 03 | [Crossed Wires](https://adventofcode.com/2019/day/3) | [Source](aoc/year2019/day03.py) | 2.65 |
@@ -116,3 +116,35 @@ Total time (avg): `5210 ms`
 | 25 | [Cryostasis](https://adventofcode.com/2019/day/25) | [Source](aoc/year2019/day25.py) | - |
 
 Total time (avg): `200 ms`
+
+## 2018
+
+| Day | Problem | Solution | Benchmark (ms) |
+| --- | --- | --- | -- |
+| 1 | [Chronal Calibration](https://adventofcode.com/2018/day/1) | [Source](aoc/year2018/day01.py) | 7.4 |
+| 2 | [Inventory Management System](https://adventofcode.com/2018/day/2) | [Source](aoc/year2018/day02.py) | 1.2 |
+| 3 | [No Matter How You Slice It](https://adventofcode.com/2018/day/3) | [Source](aoc/year2018/day03.py) | 115 |
+| 4 | [Repose Record](https://adventofcode.com/2018/day/4) | [Source](aoc/year2018/day04.py) | 5 |
+| 5 | [Alchemical Reduction](https://adventofcode.com/2018/day/5) | [Source](aoc/year2018/day05.py) | 28 |
+| 6 | [Chronal Coordinates](https://adventofcode.com/2018/day/6) | [Source](aoc/year2018/day06.py) | - |
+| 7 | [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [Source](aoc/year2018/day07.py) | - |
+| 8 | [Memory Maneuver](https://adventofcode.com/2018/day/8) | [Source](aoc/year2018/day08.py) | - |
+| 9 | [Marble Mania](https://adventofcode.com/2018/day/9) | [Source](aoc/year2018/day09.py) | - |
+| 10 | [The Stars Align](https://adventofcode.com/2018/day/10) | [Source](aoc/year2018/day10.py) | - |
+| 11 | [Chronal Charge](https://adventofcode.com/2018/day/11) | [Source](aoc/year2018/day11.py) | 180 |
+| 12 | [Subterranean Sustainability](https://adventofcode.com/2018/day/12) | [Source](aoc/year2018/day12.py) | - |
+| 13 | [Mine Cart Madness](https://adventofcode.com/2018/day/13) | [Source](aoc/year2018/day13.py) | - |
+| 14 | [Chocolate Charts](https://adventofcode.com/2018/day/14) | [Source](aoc/year2018/day14.py) | - |
+| 15 | [Beverage Bandits](https://adventofcode.com/2018/day/15) | [Source](aoc/year2018/day15.py) | - |
+| 16 | [Chronal Classification](https://adventofcode.com/2018/day/16) | [Source](aoc/year2018/day16.py) | - |
+| 17 | [Reservoir Research ](https://adventofcode.com/2018/day/17) | [Source](aoc/year2018/day17.py) | - |
+| 18 | [Settlers of The North Pole](https://adventofcode.com/2018/day/18) | [Source](aoc/year2018/day18.py) | - |
+| 19 | [Go With The Flow](https://adventofcode.com/2018/day/19) | [Source](aoc/year2018/day19.py) | - |
+| 20 | [A Regular Map](https://adventofcode.com/2018/day/20) | [Source](aoc/year2018/day20.py) | - |
+| 21 | [Chronal Conversion](https://adventofcode.com/2018/day/21) | [Source](aoc/year2018/day21.py) | - |
+| 22 | [Mode Maze](https://adventofcode.com/2018/day/22) | [Source](aoc/year2018/day22.py) | - |
+| 23 | [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) | [Source](aoc/year2018/day23.py) | - |
+| 24 | [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24) | [Source](aoc/year2018/day24.py) | - |
+| 25 | [Four-Dimensional Adventure](https://adventofcode.com/2018/day/25) | [Source](aoc/year2018/day25.py) | - |
+
+Total time (avg): `1458.7 ms`

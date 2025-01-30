@@ -53,9 +53,9 @@ for i in curr_cords:
     a[i[0], i[1]] = 1
 a = a.tolist()
 
-with open('test.txt', 'w') as f:
-    for m in a:
-        f.writelines(tx(m) + ["\n"])
+# with open('test.txt', 'w') as f:
+#     for m in a:
+#         f.writelines(tx(m) + ["\n"])
 
 # JEPPPEPG / GPEPPPEJ
 
