@@ -75,7 +75,7 @@ Total time (avg): `2004 ms`
 | 17 | [Conway Cubes](https://adventofcode.com/2020/day/17) | [Source](aoc/year2020/day17.py) | 88 |
 | 18 | [Operation Order](https://adventofcode.com/2020/day/18) | [Source](aoc/year2020/day18.py) | 4.3 |
 | 19 | [Monster Messages](https://adventofcode.com/2020/day/19) | [Source](aoc/year2020/day19.py) | 24 |
-| 20 | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20) | [Source](aoc/year2020/day20.py) | - |
+| 20 | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20) | [Source](aoc/year2020/day20.py) | 3.8 |
 | 21 | [Allergen Assessment](https://adventofcode.com/2020/day/21) | [Source](aoc/year2020/day21.py) | 0.75 |
 | 22 | [Crab Combat](https://adventofcode.com/2020/day/22) | [Source](aoc/year2020/day22.py) | 9 |
 | 23 | [Crab Cups](https://adventofcode.com/2020/day/23) | [Source](aoc/year2020/day23.py) | 2050 |
