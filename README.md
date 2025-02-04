@@ -1,7 +1,7 @@
 # aoc-solutions
 Solutions in python for online contest [Advent of Code](https://adventofcode.com/)
 
-Challenge for myself is to get to a solution < 1s for a day without multiprocessing or any external library such as numpy.
+Challenge for myself is to get to a solution < 1s for a day without multiprocessing or using any external library such as numpy.
 
 ## How to Run
 
@@ -66,7 +66,7 @@ Total time (avg): `2004 ms`
 | 08 | [Handheld Halting](https://adventofcode.com/2020/day/8) | [Source](aoc/year2020/day08.py) | 3.2 |
 | 09 | [Encoding Error](https://adventofcode.com/2020/day/9) | [Source](aoc/year2020/day09.py) | 1 |
 | 10 | [Adapter Array](https://adventofcode.com/2020/day/10) | [Source](aoc/year2020/day10.py) | 0.1 |
-| 11 | [Seating System](https://adventofcode.com/2020/day/11) | [Source](aoc/year2020/day11.py) | 333 |
+| 11 | [Seating System](https://adventofcode.com/2020/day/11) | [Source](aoc/year2020/day11.py) | 314 |
 | 12 | [Rain Risk](https://adventofcode.com/2020/day/12) | [Source](aoc/year2020/day12.py) | 0.5 |
 | 13 | [Shuttle Search](https://adventofcode.com/2020/day/13) | [Source](aoc/year2020/day13.py) | 0.4 |
 | 14 | [Docking Data](https://adventofcode.com/2020/day/14) | [Source](aoc/year2020/day14.py) | 19 |
@@ -80,9 +80,9 @@ Total time (avg): `2004 ms`
 | 22 | [Crab Combat](https://adventofcode.com/2020/day/22) | [Source](aoc/year2020/day22.py) | 9 |
 | 23 | [Crab Cups](https://adventofcode.com/2020/day/23) | [Source](aoc/year2020/day23.py) | 2050 |
 | 24 | [Lobby Layout](https://adventofcode.com/2020/day/24) | [Source](aoc/year2020/day24.py) | 216 |
-| 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Source](aoc/year2020/day25.py) | - |
+| 25 | [Combo Breaker](https://adventofcode.com/2020/day/25) | [Source](aoc/year2020/day25.py) | 1 |
 
-Total time (avg): `5210 ms`
+Total time (avg): `5211 ms`
 
 
 ## 2019
