@@ -39,9 +39,9 @@ def tx(n):
     z = []
     for q in n:
         if q == 0:
-            z.append('.')
+            z.append(".")
         else:
-            z.append('#')
+            z.append("#")
     return z
 
 
@@ -63,8 +63,16 @@ a = a.tolist()
 def part1():
     pass
 
+
 def part2():
     pass
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution: ", ans_part_1)
+print("Part2 solution: ", ans_part_2)
+
+assert ans_part_1 == 0
+assert ans_part_2 == 0

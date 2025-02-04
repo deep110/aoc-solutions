@@ -16,4 +16,4 @@ def run(check_len):
 
 
 print("Part1 solution: ", run(1))
-print("Part2 solution:", run(int(len(ms) / 2)))
+print("Part2 solution:", run(len(ms) // 2))

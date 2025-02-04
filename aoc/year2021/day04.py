@@ -1,101 +1,102 @@
-from os import path
+"""
+# Day 4: Giant Squid
 
-with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
+Instead of simulating the bingo game turn by turn, we can pre-calculate when each board will
+win by looking at its rows and columns.
 
-class Bingo(object):
-    def __init__(self, _numbers):
-        self.data = []
-        for i in _numbers:
-            arr = list(filter(lambda x: len(x) > 0, i.strip().split(" ")))
-            self.data.extend(arr)
+Steps in this trick:
+1. Map each number in every bingo board to its turn number.
+2. The MAXIMUM turn in that row/column tells you when that complete line would be marked,
+because all numbers in a line needs to be called before it wins.
+3. The MINIMUM of these maximums tells you when the board wins.
+4. The MINIMUM of every board turn win will tell which board wins first
 
-        self.mark = [0] * len(self.data)
+For Part2,
+The MAXIMUM of every board turn win will tell which board will win last.
+"""
 
-    def put(self, num):
-        if num in self.data:
-            self.mark[self.data.index(num)] = 1
+from typing import Dict
+from aoc.utils import read_input
 
-    def reset(self):
-        self.mark = [0] * len(self.data)
-    
-    def is_win(self):
-        # check rows
-        for i in range(0, len(self.data), 5):
-            if sum(self.mark[i:i+5]) == 5:
-                return True
-        
-        # check columns
+ms = read_input(2021, 4).split("\n\n")
+
+
+class BingoCard:
+    def __init__(self, numbers_str: str):
+        self.data = [-1] * 25
+        k = 0
+        for i in numbers_str.split("\n"):
+            for j in i.split(" "):
+                if j != "":
+                    self.data[k] = int(j)
+                    k += 1
+
+    def fill_winning_turn(self, turn_map: Dict[int, int]):
+        self.turn_data = [-1] * 25
+        for i in range(25):
+            self.turn_data[i] = turn_map[self.data[i]]
+
+        self.winning_turn = 10000000
+
+        # get for rows
+        for i in range(0, 25, 5):
+            max_turn = max(self.turn_data[i : i + 5])
+            if max_turn < self.winning_turn:
+                self.winning_turn = max_turn
+
+        # get for columns
         for i in range(0, 5):
-            _sum = 0
+            max_turn = 0
             for j in range(0, 5):
-                _sum += self.mark[i+ j*5]
-            if _sum == 5:
-                return True
+                if self.turn_data[i + j * 5] > max_turn:
+                    max_turn = self.turn_data[i + j * 5]
 
-        return False
+            if max_turn < self.winning_turn:
+                self.winning_turn = max_turn
 
     def unmarked_sum(self):
         unmarked_sum = 0
-        for e, m in enumerate(self.mark):
-            if m == 0:
-                unmarked_sum += int(self.data[e])
+        for i in range(25):
+            if self.turn_data[i] > self.winning_turn:
+                unmarked_sum += self.data[i]
+
         return unmarked_sum
 
 
-# parse lot
-draws = ms[0].strip().split(",")
-cards = []
-
-# parse bingo cards
-for i in range(1, len(ms), 6):
-    cards.append(Bingo(ms[i+1: i+6]))
+# parse lot and bingo cards
+draws = list(map(lambda x: int(x), ms[0].split(",")))
+cards = [BingoCard(ms[i]) for i in range(1, len(ms))]
 
 
-def part1():
-    winning_card = None
-    winning_lot = -1
-    for i in draws:
-        for c in cards:
-            c.put(i)
-            if c.is_win():
-                winning_card = c
-                break
-        if winning_card is not None:
-            winning_lot = int(i)
-            break
+def part12():
+    turn_map = {}
+    for i in range(len(draws)):
+        turn_map[draws[i]] = i
 
-    return winning_card.unmarked_sum() * winning_lot
-    
+    cards[0].fill_winning_turn(turn_map)
 
-def part2():
-    last_card = None
-    winning_lot = -1
-    rem_cards = cards.copy()
-    for c in rem_cards:
-        c.reset()
+    first_win_card: BingoCard = cards[0]
+    last_win_card: BingoCard = cards[0]
 
-    for i in draws:
-        j = 0
-        while j < len(rem_cards):
-            c = rem_cards[j]
-            c.put(i)
+    for i in range(1, len(cards)):
+        bingo_card = cards[i]
+        bingo_card.fill_winning_turn(turn_map)
+        if bingo_card.winning_turn < first_win_card.winning_turn:
+            first_win_card = bingo_card
 
-            if c.is_win():
-                if len(rem_cards) == 1:
-                    last_card = c
-                    winning_lot = int(i)
-                    break
-                else:
-                    rem_cards.pop(j)
-            else:
-                j += 1
+        if bingo_card.winning_turn > last_win_card.winning_turn:
+            last_win_card = bingo_card
 
-            
-        if last_card is not None:
-            break
-    
-    return last_card.unmarked_sum() * winning_lot
+    ans_p1 = draws[first_win_card.winning_turn] * first_win_card.unmarked_sum()
+    ans_p2 = draws[last_win_card.winning_turn] * last_win_card.unmarked_sum()
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+    return ans_p1, ans_p2
+
+
+ans_part_1, ans_part_2 = part12()
+
+print("Part1 solution:", ans_part_1)
+print("Part2 solution:", ans_part_2)
+
+assert ans_part_1 == 11774
+assert ans_part_2 == 4495

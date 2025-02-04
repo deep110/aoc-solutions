@@ -1,77 +1,78 @@
-from os import path
+"""
+# Day 5: Hydrothermal Venture
+"""
+
+from collections import defaultdict
 import re
+from typing import Dict
+from aoc.utils import read_input
 
-with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
+ms = read_input(2021, 5).split("\n")
 
-REG = re.compile(r"(\d+),(\d+) -> (\d+),(\d+)")
+PATTERN = re.compile(r"(\d+),(\d+) -> (\d+),(\d+)")
+WIDTH = 1000
 
-class Grid(object):
-    def __init__(self, dim):
-        self.data = []
-        self.dims = dim
-        for i in range(dim):
-            self.data.append([0] * dim)
 
-    def reset(self):
-        self.data = []
-        for i in range(self.dims):
-            self.data.append([0] * self.dims)
+def add_parallel_line(grid, x1, y1, x2, y2):
+    # vertical line (x1 == x2)
+    if x1 == x2:
+        y_sign = 1 if y1 < y2 else -1
+        for i in range(y1, y2 + y_sign, y_sign):
+            grid[WIDTH * i + x1] += 1
+        return
 
-    def add_line(self, pt1, pt2, is_dig=False):
-        # vertical line (x1 == x2)
-        if pt1[0] == pt2[0]:
-            y_sign = 1 if pt1[1] < pt2[1] else -1
-            for i in range(pt1[1], pt2[1]+y_sign, y_sign):
-                self.data[i][pt1[0]] += 1
-            return
-        
-        # horizontal line (y1 == y2)
-        if pt1[1] == pt2[1]:
-            x_sign = 1 if pt1[0] < pt2[0] else -1
-            for i in range(pt1[0], pt2[0]+x_sign, x_sign):
-                self.data[pt1[1]][i] += 1
-            return
-        
-        # diagonal
-        if is_dig:
-            x_sign = 1 if pt1[0] < pt2[0] else -1
-            y_sign = 1 if pt1[1] < pt2[1] else -1
+    # horizontal line (y1 == y2)
+    if y1 == y2:
+        x_sign = 1 if x1 < x2 else -1
+        for i in range(x1, x2 + x_sign, x_sign):
+            grid[WIDTH * y1 + i] += 1
+        return
 
-            j = pt1[1]
-            for i in range(pt1[0], pt2[0]+x_sign, x_sign):
-                self.data[j][i] += 1
-                j += y_sign
-    
-    def num_crossings(self):
-        num_crossings = 0
-        for r in self.data:
-            num_crossings += sum(map(lambda x : x > 1, r))
 
-        return num_crossings
+def add_diagonal_line(grid, x1, y1, x2, y2):
+    x_sign = 1 if x1 < x2 else -1
+    y_sign = 1 if y1 < y2 else -1
+
+    j = y1
+    for i in range(x1, x2 + x_sign, x_sign):
+        grid[WIDTH * j + i] += 1
+        j += y_sign
+
+
+def num_crossings(grid: Dict[int, int]):
+    num_crossings = 0
+    for v in grid.values():
+        if v > 1:
+            num_crossings += 1
+
+    return num_crossings
 
 
 def parse_line(line):
-    g = REG.search(line)
-    return ((int(g[1]), int(g[2])), (int(g[3]), int(g[4])))
+    g = PATTERN.match(line)
+    return (int(g[1]), int(g[2]), int(g[3]), int(g[4]))
 
-# init grid
-grid = Grid(1000)
-coords = list(map(lambda x: parse_line(x), ms))
 
-def part1():
-    for c in coords:
-        grid.add_line(c[0], c[1])
+def part12():
+    coords = list(map(lambda x: parse_line(x), ms))
+    grid = defaultdict(int)
 
-    # count no of crossings
-    return grid.num_crossings()
+    for x1, y1, x2, y2 in coords:
+        add_parallel_line(grid, x1, y1, x2, y2)
+    p_num_crossings = num_crossings(grid)
 
-def part2():
-    grid.reset()
-    for c in coords:
-        grid.add_line(c[0], c[1], True)
+    for x1, y1, x2, y2 in coords:
+        if x1 != x2 and y1 != y2:
+            add_diagonal_line(grid, x1, y1, x2, y2)
+    d_num_crossings = num_crossings(grid)
 
-    return grid.num_crossings()
+    return p_num_crossings, d_num_crossings
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+
+ans_part_1, ans_part_2 = part12()
+
+print("Part1 solution:", ans_part_1)
+print("Part2 solution:", ans_part_2)
+
+assert ans_part_1 == 6548
+assert ans_part_2 == 19663

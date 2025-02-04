@@ -1,36 +1,32 @@
-from os import path
+"""
+# Day 3: Binary Diagnostic
+"""
 
-with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
+from collections import Counter
+from aoc.utils import read_input
 
-ms = list(map(lambda x: x.strip(), ms))
+ms = read_input(2021, 3).split("\n")
 
-def get_rating(is_reversed=False):
-    code_len = int(len(ms[0]))
-    valid_codes = ms.copy()
 
-    for i in range(code_len):
-        if len(valid_codes) == 1:
-            break
+def get_rating(is_co2=False):
+    numbers = ms.copy()
+    position = 0
 
-        columns = list(zip(*valid_codes))
-        column_to_check = columns[i]
-        key_number = "0"
+    while len(numbers) > 1:
+        # Count bits at current position
+        count = Counter(num[position] for num in numbers)
 
-        if is_reversed:
-            if column_to_check.count("0") > column_to_check.count("1"):
-                key_number = "1"
+        # Determine bit criteria
+        if is_co2:
+            bit = "0" if count["1"] >= count["0"] else "1"
         else:
-            if column_to_check.count("1") >= column_to_check.count("0"):
-                key_number = "1"
-        
-        remaining_codes = []
-        for number in valid_codes:
-            if number[i] == key_number:
-                remaining_codes.append(number)
-        valid_codes = remaining_codes
+            bit = "1" if count["1"] >= count["0"] else "0"
 
-    return valid_codes[0]
+        # Filter numbers in place
+        numbers = [num for num in numbers if num[position] == bit]
+        position += 1
+
+    return int(numbers[0], 2)
 
 
 def part1():
@@ -51,10 +47,16 @@ def part1():
 
 def part2():
     oxygen_gen = get_rating()
-    co2_scrub = get_rating(True)
+    co2_scrub = get_rating(is_co2=True)
 
-    return int(oxygen_gen, 2) * int(co2_scrub, 2)
+    return oxygen_gen * co2_scrub
 
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution:", ans_part_1)
+print("Part2 solution:", ans_part_2)
+
+assert ans_part_1 == 1071734
+assert ans_part_2 == 6124992

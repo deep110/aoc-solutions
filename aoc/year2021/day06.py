@@ -1,42 +1,44 @@
-from os import path
+"""
+# Day 6: Lanternfish
 
-with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
+The key optimization is that all fish of the same age behave the same, so we only
+need to store the *total* of each fish per day, rather than each fish individually.
+"""
 
-counters = list(map(lambda x: int(x), ms[0].strip().split(",")))
+from collections import defaultdict
+from aoc.utils import read_input
 
-def simulate(_fc_dict):
-    zero_num = _fc_dict[0]
+ms = read_input(2021, 6)
+counters = list(map(lambda x: int(x), ms.split(",")))
+
+
+def simulate(fc_dict):
+    zero_num = fc_dict[0]
 
     for c in range(8):
-        _fc_dict[c] = _fc_dict[c + 1]
-    
-    _fc_dict[6] += zero_num
-    _fc_dict[8] = zero_num
+        fc_dict[c] = fc_dict[c + 1]
+
+    fc_dict[6] += zero_num
+    fc_dict[8] = zero_num
 
 
-def get_total_fishes(_fish_counter, num_days):
-    fc_dict = {}
-    for i in range(9):
-        fc_dict[i] = 0
+def part12(num_days):
+    fc_dict = defaultdict(int)
 
     for i in counters:
         fc_dict[i] += 1
 
-    for d in range(num_days):
+    for _ in range(num_days):
         simulate(fc_dict)
 
-    total_fishes = 0
-    for i in range(9):
-        total_fishes += fc_dict[i]
-    
-    return total_fishes
+    return sum(fc_dict.values())
 
-def part1():
-    return get_total_fishes(counters, 80)
 
-def part2():
-    return get_total_fishes(counters, 256)
+ans_part_1 = part12(80)
+ans_part_2 = part12(256)
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+print("Part1 solution:", ans_part_1)
+print("Part2 solution:", ans_part_2)
+
+assert ans_part_1 == 371379
+assert ans_part_2 == 1674303997472

@@ -52,6 +52,38 @@ python runner.py 2024 10
 Total time (avg): `2004 ms`
 
 
+## 2021
+
+| Day | Problem | Solution | Benchmark (ms) |
+| --- | --- | --- | -- |
+| 1 | [Sonar Sweep](https://adventofcode.com/2021/day/1) | [Source](aoc/year2021/day01.py) | 0.7 |
+| 2 | [Dive!](https://adventofcode.com/2021/day/2) | [Source](aoc/year2021/day02.py) | 0.46 |
+| 3 | [Binary Diagnostic](https://adventofcode.com/2021/day/3) | [Source](aoc/year2021/day03.py) | 1 |
+| 4 | [Giant Squid](https://adventofcode.com/2021/day/4) | [Source](aoc/year2021/day04.py) | 0.9 |
+| 5 | [Hydrothermal Venture](https://adventofcode.com/2021/day/5) | [Source](aoc/year2021/day05.py) | 34 |
+| 6 | [Lanternfish](https://adventofcode.com/2021/day/6) | [Source](aoc/year2021/day06.py) | 0.4 |
+| 7 | [The Treachery of Whales](https://adventofcode.com/2021/day/7) | [Source](aoc/year2021/day07.py) | 0.8 |
+| 8 | [Seven Segment Search](https://adventofcode.com/2021/day/8) | [Source](aoc/year2021/day08.py) | 1 |
+| 9 | [Smoke Basin](https://adventofcode.com/2021/day/9) | [Source](aoc/year2021/day09.py) | - |
+| 10 | [Syntax Scoring](https://adventofcode.com/2021/day/10) | [Source](aoc/year2021/day10.py) | - |
+| 11 | [Dumbo Octopus](https://adventofcode.com/2021/day/11) | [Source](aoc/year2021/day11.py) | - |
+| 12 | [Passage Pathing](https://adventofcode.com/2021/day/12) | [Source](aoc/year2021/day12.py) | - |
+| 13 | [Transparent Origami](https://adventofcode.com/2021/day/13) | [Source](aoc/year2021/day13.py) | - |
+| 14 | [Extended Polymerization](https://adventofcode.com/2021/day/14) | [Source](aoc/year2021/day14.py) | - |
+| 15 | [Chiton](https://adventofcode.com/2021/day/15) | [Source](aoc/year2021/day15.py) | - |
+| 16 | [Packet Decoder](https://adventofcode.com/2021/day/16) | [Source](aoc/year2021/day16.py) | - |
+| 17 | [Trick Shot](https://adventofcode.com/2021/day/17) | [Source](aoc/year2021/day17.py) | - |
+| 18 | [Snailfish](https://adventofcode.com/2021/day/18) | [Source](aoc/year2021/day18.py) | - |
+| 19 | [Beacon Scanner](https://adventofcode.com/2021/day/19) | [Source](aoc/year2021/day19.py) | - |
+| 20 | [Trench Map](https://adventofcode.com/2021/day/20) | [Source](aoc/year2021/day20.py) | - |
+| 21 | [Dirac Dice](https://adventofcode.com/2021/day/21) | [Source](aoc/year2021/day21.py) | - |
+| 22 | [Reactor Reboot](https://adventofcode.com/2021/day/22) | [Source](aoc/year2021/day22.py) | - |
+| 23 | [Amphipod](https://adventofcode.com/2021/day/23) | [Source](aoc/year2021/day23.py) | - |
+| 24 | [Arithmetic Logic Unit](https://adventofcode.com/2021/day/24) | [Source](aoc/year2021/day24.py) | - |
+| 25 | [Sea Cucumber](https://adventofcode.com/2021/day/25) | [Source](aoc/year2021/day25.py) | - |
+
+
+
 ## 2020
 
 | Day | Problem | Solution | Benchmark (ms) |
@@ -126,9 +158,9 @@ Total time (avg): `200 ms`
 | 3 | [No Matter How You Slice It](https://adventofcode.com/2018/day/3) | [Source](aoc/year2018/day03.py) | 115 |
 | 4 | [Repose Record](https://adventofcode.com/2018/day/4) | [Source](aoc/year2018/day04.py) | 5 |
 | 5 | [Alchemical Reduction](https://adventofcode.com/2018/day/5) | [Source](aoc/year2018/day05.py) | 28 |
-| 6 | [Chronal Coordinates](https://adventofcode.com/2018/day/6) | [Source](aoc/year2018/day06.py) | - |
-| 7 | [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [Source](aoc/year2018/day07.py) | - |
-| 8 | [Memory Maneuver](https://adventofcode.com/2018/day/8) | [Source](aoc/year2018/day08.py) | - |
+| 6 | [Chronal Coordinates](https://adventofcode.com/2018/day/6) | [Source](aoc/year2018/day06.py) | 945 |
+| 7 | [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [Source](aoc/year2018/day07.py) | 1.5 |
+| 8 | [Memory Maneuver](https://adventofcode.com/2018/day/8) | [Source](aoc/year2018/day08.py) | 3.43 |
 | 9 | [Marble Mania](https://adventofcode.com/2018/day/9) | [Source](aoc/year2018/day09.py) | - |
 | 10 | [The Stars Align](https://adventofcode.com/2018/day/10) | [Source](aoc/year2018/day10.py) | - |
 | 11 | [Chronal Charge](https://adventofcode.com/2018/day/11) | [Source](aoc/year2018/day11.py) | 180 |

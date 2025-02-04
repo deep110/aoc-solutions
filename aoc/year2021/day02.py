@@ -1,48 +1,51 @@
-from os import path
-import re
+"""
+# Day 2: Dive!
+"""
 
-with open(path.join(path.dirname(__file__), "input.txt")) as f:
-    ms = f.readlines()
+from aoc.utils import read_input
 
-REG = re.compile(r"(forward|up|down) (\d+)")
+ms = [i.split(" ") for i in read_input(2021, 2).split("\n")]
+
 
 def part1():
     x = 0
     y = 0
-    for i in ms:
-        q = REG.search(i.strip())
-        val = int(q[2])
+    for command in ms:
+        val = int(command[1])
 
-        if q[1] == "up":
+        if command[0] == "up":
             y -= val
-        elif q[1] == "down":
+        elif command[0] == "down":
             y += val
-        elif q[1] == "forward":
+        elif command[0] == "forward":
             x += val
-        else:
-            print(i)
-    
+
     return x * y
+
 
 def part2():
     x = 0
     y = 0
     aim = 0
-    for i in ms:
-        q = REG.search(i.strip())
-        val = int(q[2])
+    for command in ms:
+        val = int(command[1])
 
-        if q[1] == "up":
+        if command[0] == "up":
             aim -= val
-        elif q[1] == "down":
+        elif command[0] == "down":
             aim += val
-        elif q[1] == "forward":
+        elif command[0] == "forward":
             x += val
             y += aim * val
-        else:
-            print(i)
-    
+
     return x * y
 
-print("Part1 solution: ", part1())
-print("Part2 solution: ", part2())
+
+ans_part_1 = part1()
+ans_part_2 = part2()
+
+print("Part1 solution:", ans_part_1)
+print("Part2 solution:", ans_part_2)
+
+assert ans_part_1 == 1561344
+assert ans_part_2 == 1848454425
