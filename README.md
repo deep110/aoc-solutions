@@ -64,7 +64,7 @@ Total time (avg): `2004 ms`
 | 6 | [Lanternfish](https://adventofcode.com/2021/day/6) | [Source](aoc/year2021/day06.py) | 0.4 |
 | 7 | [The Treachery of Whales](https://adventofcode.com/2021/day/7) | [Source](aoc/year2021/day07.py) | 0.8 |
 | 8 | [Seven Segment Search](https://adventofcode.com/2021/day/8) | [Source](aoc/year2021/day08.py) | 1 |
-| 9 | [Smoke Basin](https://adventofcode.com/2021/day/9) | [Source](aoc/year2021/day09.py) | - |
+| 9 | [Smoke Basin](https://adventofcode.com/2021/day/9) | [Source](aoc/year2021/day09.py) | 6.5 |
 | 10 | [Syntax Scoring](https://adventofcode.com/2021/day/10) | [Source](aoc/year2021/day10.py) | - |
 | 11 | [Dumbo Octopus](https://adventofcode.com/2021/day/11) | [Source](aoc/year2021/day11.py) | - |
 | 12 | [Passage Pathing](https://adventofcode.com/2021/day/12) | [Source](aoc/year2021/day12.py) | - |
